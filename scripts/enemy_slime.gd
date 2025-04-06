@@ -9,6 +9,11 @@ enum MaxDistanceType {RELATIVE, GLOBAL}
 @onready var hurtbox: Hurtbox2D = $Hurtbox
 @onready var wall_raycast: RayCast2D = $WallRayCast
 
+@export var sprite_frames: SpriteFrames:
+	set(value):
+		sprite_frames = value
+		_apply_sprite_frames()
+
 @export var max_distance_type := MaxDistanceType.RELATIVE
 @export var max_distance := 1000.0
 @export var speed := 50.0
@@ -27,6 +32,13 @@ func _ready():
 
 	_start_position = _position_supplier.call()
 	velocity.x = _direction * speed
+	_apply_sprite_frames()
+
+
+func _apply_sprite_frames():
+	if is_node_ready() and sprite_frames:
+		sprite.sprite_frames = sprite_frames
+		sprite.play()
 
 
 func _physics_process(delta: float):

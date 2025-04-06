@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://mfj2ogfcfohv"]
+
+[ext_resource type="Texture2D" uid="uid://d3yyxnikrhnn7" path="res://assets/sprites/slime_amber.png" id="1_7o4at"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5tcy"]
+atlas = ExtResource("1_7o4at")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11g1h"]
+atlas = ExtResource("1_7o4at")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyajf"]
+atlas = ExtResource("1_7o4at")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7y14"]
+atlas = ExtResource("1_7o4at")
+region = Rect2(72, 24, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5tcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11g1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyajf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7y14")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]

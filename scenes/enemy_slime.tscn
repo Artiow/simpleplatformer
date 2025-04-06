@@ -1,56 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyqmbo66567qp"]
+[gd_scene load_steps=6 format=3 uid="uid://dyqmbo66567qp"]
 
-[ext_resource type="Texture2D" uid="uid://d21s6k5g4lxgb" path="res://assets/sprites/slime_green.png" id="1_kw873"]
 [ext_resource type="Script" uid="uid://cavjs0kovvcl0" path="res://scripts/enemy_slime.gd" id="1_lh1w4"]
+[ext_resource type="SpriteFrames" uid="uid://jtp17ai0e34" path="res://resources/slime_sprite_frames_green.tres" id="2_ecc73"]
 [ext_resource type="Shape2D" uid="uid://cbaqneb5rhios" path="res://resources/slime_shape.tres" id="3_aelh5"]
 [ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/Hitbox2D.gd" id="4_y5ckx"]
 [ext_resource type="Script" uid="uid://5miol22apxl6" path="res://objects/nodes/Hurtbox2D.gd" id="6_afdiv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lh1w4"]
-atlas = ExtResource("1_kw873")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw3lm"]
-atlas = ExtResource("1_kw873")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aelh5"]
-atlas = ExtResource("1_kw873")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqssr"]
-atlas = ExtResource("1_kw873")
-region = Rect2(72, 24, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bmd3v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lh1w4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qw3lm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aelh5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqssr")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}]
 
 [node name="EnemySlime" type="CharacterBody2D"]
 z_index = 9
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_lh1w4")
+sprite_frames = ExtResource("2_ecc73")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_bmd3v")
+sprite_frames = ExtResource("2_ecc73")
 animation = &"idle"
 autoplay = "idle"
 metadata/_edit_lock_ = true

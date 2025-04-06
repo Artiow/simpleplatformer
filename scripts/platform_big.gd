@@ -1,8 +1,23 @@
 class_name PlatformBig
 extends StaticBody2D
 
+@onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var monitoring_area: Area2D = $MonitoringArea
+
+@export var sprite_texture: Texture2D:
+	set(value):
+		sprite_texture = value
+		_apply_sprite_texture()
+
+
+func _ready():
+	_apply_sprite_texture()
+
+
+func _apply_sprite_texture():
+	if is_node_ready() and sprite_texture:
+		sprite.texture = sprite_texture
 
 
 func drop_through():
