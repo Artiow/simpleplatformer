@@ -9,6 +9,9 @@ enum MaxDistanceType {RELATIVE, GLOBAL}
 @onready var hurtbox: Hurtbox2D = $Hurtbox
 @onready var wall_raycast: RayCast2D = $WallRayCast
 
+@onready var kill_timer: Timer = $KillTimer
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+
 @export var sprite_frames: SpriteFrames:
 	set(value):
 		sprite_frames = value
@@ -17,6 +20,7 @@ enum MaxDistanceType {RELATIVE, GLOBAL}
 @export var max_distance_type := MaxDistanceType.RELATIVE
 @export var max_distance := 1000.0
 @export var speed := 50.0
+@export var death_jump_velocity := -100.0
 
 var _position_supplier: Callable
 var _start_position: Vector2
@@ -64,12 +68,30 @@ func flip():
 	sprite.flip_h = not sprite.flip_h
 
 
-func _on_hurtbox_hit_received(source: Node2D):
-	_kill(source)
+func _on_hurtbox_hit_received(attacker: Node2D):
+	_kill(attacker)
 
 
 func _kill(killer: Node2D):
 	if not _is_dead:
 		_is_dead = true
-		queue_free()
+		_handle_death()
+		kill_timer.start()
 		print_debug(self, " is killed by ", killer)
+
+
+func _handle_death():
+	velocity.y = death_jump_velocity
+	collision_shape.queue_free()
+	hitbox.queue_free()
+	hurtbox.queue_free()
+	_play_death_animation()
+
+
+func _play_death_animation():
+	sprite.play(&"death")
+	death_sound.play()
+
+
+func _on_kill_timer_timeout():
+	queue_free()

@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://fhgd56martub" path="res://assets/sounds/jump.wav" id="3_qhqgy"]
 [ext_resource type="Shape2D" uid="uid://pqp3vlpj8lk3" path="res://resources/player_shape.tres" id="3_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dijpdmxpk61uy" path="res://assets/sounds/hurt.wav" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://5miol22apxl6" path="res://objects/nodes/Hurtbox2D.gd" id="4_fjrip"]
 [ext_resource type="Script" uid="uid://b27upa5mr6pag" path="res://objects/nodes/Collector2D.gd" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://dqwowxtlmei2w" path="res://scripts/player_hurtbox.gd" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("1_4flbx")
@@ -257,7 +257,7 @@ visible = false
 position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 192
-script = ExtResource("4_fjrip")
+script = ExtResource("5_qlg0r")
 metadata/_custom_type_script = "uid://5miol22apxl6"
 metadata/_edit_lock_ = true
 
@@ -298,4 +298,5 @@ bus = &"SFX"
 metadata/_edit_lock_ = true
 
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
+[connection signal="hit_reflected" from="Hurtbox" to="." method="_on_hurtbox_hit_reflected"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

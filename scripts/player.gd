@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
+@export var godmode := false
 @export var speed := 150.0
 @export var jump_velocity := -275.0
 @export var jump_limit := 2
@@ -45,11 +46,15 @@ func _handle_platform_drop():
 
 func _handle_jump():
 	if Input.is_action_just_pressed(&"jump") and can_jump():
-		velocity.y = jump_velocity
-		_jump_count += 1
-		_play_jump_animation()
+		_jump()
 	elif is_on_floor():
 		_jump_count = 0
+
+
+func _jump():
+	velocity.y = jump_velocity
+	_jump_count += 1
+	_play_jump_animation()
 
 
 func _handle_movement():
@@ -73,12 +78,17 @@ func add_score(points: int = 1):
 	game_manager.add_player_score(points)
 
 
-func _on_hurtbox_hit_received(source: Node2D):
-	_kill(source)
+func _on_hurtbox_hit_reflected():
+	_jump_count = 0
+	_jump()
+
+
+func _on_hurtbox_hit_received(attacker: Node2D):
+	_kill(attacker)
 
 
 func _kill(killer: Node2D):
-	if not _is_dead:
+	if not _is_dead and not godmode:
 		_is_dead = true
 		Engine.time_scale = 0.5
 		_handle_death()
