@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://krgfsgu728jt"]
 
-[ext_resource type="Script" uid="uid://cumjryuiv5x0v" path="res://scripts/platform_green_big.gd" id="1_sr7hh"]
+[ext_resource type="Script" uid="uid://cumjryuiv5x0v" path="res://scripts/platform_big.gd" id="1_sr7hh"]
 [ext_resource type="Texture2D" uid="uid://b1xmge1byo7ut" path="res://assets/sprites/platforms.png" id="1_v13q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qug0"]
@@ -9,8 +9,8 @@ size = Vector2(32, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gcnc"]
 size = Vector2(32, 23)
 
-[node name="PlatformGreenBig" type="AnimatableBody2D"]
-z_index = 1
+[node name="PlatformBig" type="AnimatableBody2D"]
+z_index = 2
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_sr7hh")
@@ -27,13 +27,13 @@ shape = SubResource("RectangleShape2D_2qug0")
 one_way_collision = true
 
 [node name="MonitoringArea" type="Area2D" parent="."]
+position = Vector2(0, -2.5)
 collision_layer = 0
 collision_mask = 8
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="MonitoringArea"]
-position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_3gcnc")
 
 [connection signal="body_entered" from="MonitoringArea" to="." method="_on_monitoring_area_body_entered"]

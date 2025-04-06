@@ -8,3 +8,6 @@ addons/
 # IntelliJ IDEA specific ignores
 .idea/
 *.iml
+
+# Misc
+tmp/

@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyqmbo66567qp"]
+[gd_scene load_steps=11 format=3 uid="uid://dyqmbo66567qp"]
 
 [ext_resource type="Texture2D" uid="uid://d21s6k5g4lxgb" path="res://assets/sprites/slime_green.png" id="1_kw873"]
-[ext_resource type="Script" uid="uid://cavjs0kovvcl0" path="res://scripts/slime_green.gd" id="1_lh1w4"]
+[ext_resource type="Script" uid="uid://cavjs0kovvcl0" path="res://scripts/enemy_slime.gd" id="1_lh1w4"]
+[ext_resource type="Shape2D" uid="uid://cbaqneb5rhios" path="res://resources/slime_shape.tres" id="3_aelh5"]
+[ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/Hitbox2D.gd" id="4_y5ckx"]
+[ext_resource type="Script" uid="uid://5miol22apxl6" path="res://objects/nodes/Hurtbox2D.gd" id="6_afdiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lh1w4"]
 atlas = ExtResource("1_kw873")
@@ -39,15 +42,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh1w4"]
-size = Vector2(14, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppyls"]
-size = Vector2(14, 12)
-
-[node name="SlimeGreen" type="CharacterBody2D"]
+[node name="EnemySlime" type="CharacterBody2D"]
 z_index = 9
-collision_layer = 4
+collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_lh1w4")
 
@@ -56,21 +53,42 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_bmd3v")
 animation = &"idle"
 autoplay = "idle"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_lh1w4")
+shape = ExtResource("3_aelh5")
+metadata/_edit_lock_ = true
 
-[node name="HitRange" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("4_y5ckx")
+metadata/_custom_type_script = "uid://dj2gcyhf1k0ed"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Hitbox"]
+shape = ExtResource("3_aelh5")
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 128
+script = ExtResource("6_afdiv")
+metadata/_custom_type_script = "uid://5miol22apxl6"
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape" type="CollisionShape2D" parent="HitRange"]
-shape = SubResource("RectangleShape2D_ppyls")
+[node name="CollisionShape" type="CollisionShape2D" parent="Hurtbox"]
+shape = ExtResource("3_aelh5")
+metadata/_edit_lock_ = true
 
 [node name="WallRayCast" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 target_position = Vector2(8, 0)
+metadata/_edit_lock_ = true
 
-[connection signal="body_entered" from="HitRange" to="." method="_on_hit_range_body_entered"]
+[connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

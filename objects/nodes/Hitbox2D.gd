@@ -1,0 +1,2 @@
+class_name Hitbox2D
+extends InteractionBox2D

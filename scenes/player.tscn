@@ -1,9 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://jddfgvfucfsj"]
+[gd_scene load_steps=38 format=3 uid="uid://jddfgvfucfsj"]
 
 [ext_resource type="Texture2D" uid="uid://ck16uodw5e4e7" path="res://assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://vvwwnomiplws" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://fhgd56martub" path="res://assets/sounds/jump.wav" id="3_qhqgy"]
+[ext_resource type="Shape2D" uid="uid://pqp3vlpj8lk3" path="res://resources/player_shape.tres" id="3_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dijpdmxpk61uy" path="res://assets/sounds/hurt.wav" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://5miol22apxl6" path="res://objects/nodes/Hurtbox2D.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://b27upa5mr6pag" path="res://objects/nodes/Collector2D.gd" id="5_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("1_4flbx")
@@ -231,10 +234,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4flbx"]
-radius = 4.0
-height = 10.0
-
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 collision_layer = 8
@@ -246,16 +245,44 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_0qfo5")
 animation = &"idle"
 autoplay = "idle"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_4flbx")
+position = Vector2(0, -7)
+shape = ExtResource("3_tuyoq")
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 192
+script = ExtResource("4_fjrip")
+metadata/_custom_type_script = "uid://5miol22apxl6"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Hurtbox"]
+shape = ExtResource("3_tuyoq")
+metadata/_edit_lock_ = true
+
+[node name="Collector" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_fjrip")
+metadata/_custom_type_script = "uid://b27upa5mr6pag"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Collector"]
+shape = ExtResource("3_tuyoq")
+metadata/_edit_lock_ = true
 
 [node name="PlatformRayCast" type="RayCast2D" parent="."]
-position = Vector2(0, -4)
-target_position = Vector2(0, 5)
+position = Vector2(0, -7)
+target_position = Vector2(0, 8)
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -263,9 +290,12 @@ wait_time = 0.5
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qhqgy")
 bus = &"SFX"
+metadata/_edit_lock_ = true
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")
 bus = &"SFX"
+metadata/_edit_lock_ = true
 
+[connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

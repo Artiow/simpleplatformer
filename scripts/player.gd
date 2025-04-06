@@ -1,10 +1,14 @@
-class_name Player2D
+class_name Player
 extends CharacterBody2D
 
 @onready var game_manager: GameManager = %GameManager
-@onready var collision_shape: CollisionShape2D = $CollisionShape
-@onready var platform_raycast: RayCast2D = $PlatformRayCast
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
+@onready var collision_shape: CollisionShape2D = $CollisionShape
+@onready var hurtbox: Hurtbox2D = $Hurtbox
+@onready var collector: Collector2D = $Collector
+@onready var platform_raycast: RayCast2D = $PlatformRayCast
+
 @onready var kill_timer: Timer = $KillTimer
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
@@ -35,7 +39,7 @@ func _apply_gravity(delta: float):
 func _handle_platform_drop():
 	if Input.is_action_just_pressed(&"drop_down") and platform_raycast.is_colliding():
 		var platform := platform_raycast.get_collider()
-		if platform is Platform2D:
+		if platform is PlatformBig:
 			platform.drop_through()
 
 
@@ -65,29 +69,28 @@ func can_jump() -> bool:
 	return not _is_dead and (is_on_floor() or _jump_count < jump_limit)
 
 
-func collect(item: StringName, quantity: int = 1):
-	if item == &"coin":
-		game_manager.add_player_score(quantity)
+func add_score(points: int = 1):
+	game_manager.add_player_score(points)
 
 
-func kill(killer: Node2D = null) -> void:
-	if _is_dead:
-		return
+func _on_hurtbox_hit_received(source: Node2D):
+	_kill(source)
 
-	_is_dead = true
-	Engine.time_scale = 0.5
-	_handle_death()
-	kill_timer.start()
 
-	if killer:
+func _kill(killer: Node2D):
+	if not _is_dead:
+		_is_dead = true
+		Engine.time_scale = 0.5
+		_handle_death()
+		kill_timer.start()
 		print_debug(self, " is killed by ", killer)
-	else:
-		print_debug(self, " is killed")
 
 
 func _handle_death():
 	velocity.y = death_jump_velocity
 	collision_shape.queue_free()
+	hurtbox.queue_free()
+	collector.queue_free()
 	_play_death_animation()
 
 

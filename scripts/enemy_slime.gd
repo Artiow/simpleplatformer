@@ -1,8 +1,12 @@
+class_name EnemySlime
 extends CharacterBody2D
 
 enum MaxDistanceType {RELATIVE, GLOBAL}
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
+@onready var collision_shape: CollisionShape2D = $CollisionShape
+@onready var hitbox: Hitbox2D = $Hitbox
+@onready var hurtbox: Hurtbox2D = $Hurtbox
 @onready var wall_raycast: RayCast2D = $WallRayCast
 
 @export var max_distance_type := MaxDistanceType.RELATIVE
@@ -12,7 +16,7 @@ enum MaxDistanceType {RELATIVE, GLOBAL}
 var _position_supplier: Callable
 var _start_position: Vector2
 var _direction := 1
-var _dead := false
+var _is_dead := false
 
 
 func _ready():
@@ -48,15 +52,12 @@ func flip():
 	sprite.flip_h = not sprite.flip_h
 
 
-func _on_hit_range_body_entered(body: Node2D):
-	if body is Player2D:
-		body.kill(self)
+func _on_hurtbox_hit_received(source: Node2D):
+	_kill(source)
 
 
-func kill(killer: Node2D = null):
-	if not _dead:
+func _kill(killer: Node2D):
+	if not _is_dead:
+		_is_dead = true
 		queue_free()
-		if killer:
-			print_debug(self, " is killed by ", killer)
-		else:
-			print_debug(self, " is killed")
+		print_debug(self, " is killed by ", killer)

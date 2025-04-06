@@ -1,7 +1,7 @@
-class_name Platform2D
+class_name PlatformBig
 extends StaticBody2D
 
-@onready var collision: CollisionShape2D = $CollisionShape
+@onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var monitoring_area: Area2D = $MonitoringArea
 
 
@@ -22,9 +22,9 @@ func _enable_monitoring():
 
 
 func _disable_collision():
-	collision.disabled = true
+	collision_shape.disabled = true
 
 
 func _enable_collision():
-	collision.disabled = false
+	collision_shape.disabled = false
 	monitoring_area.monitoring = false

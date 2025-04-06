@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://6eykw7iifspf"]
+[gd_scene load_steps=22 format=3 uid="uid://6eykw7iifspf"]
 
 [ext_resource type="Script" uid="uid://d0qsalst3hu80" path="res://scripts/coin.gd" id="1_i64fm"]
 [ext_resource type="Texture2D" uid="uid://cm6us20qrg0ks" path="res://assets/sprites/coin.png" id="1_rwqht"]
+[ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="2_d14el"]
 [ext_resource type="AudioStream" uid="uid://ei8ixnoy4ucp" path="res://assets/sounds/coin.wav" id="3_11l1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i64fm"]
@@ -199,25 +200,30 @@ _data = {
 }
 
 [node name="Coin" type="Area2D"]
-z_index = 2
-collision_layer = 0
-collision_mask = 8
+z_index = 1
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_i64fm")
+strategy = ExtResource("2_d14el")
+metadata/_custom_type_script = "uid://olvwhbhg2cge"
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ls27i")
 autoplay = "default"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rwqht")
+metadata/_edit_lock_ = true
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_11l1o")
 bus = &"SFX"
+metadata/_edit_lock_ = true
 
 [node name="PickupAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1ikuy")
 }
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="collected" from="." to="." method="_on_collected"]
