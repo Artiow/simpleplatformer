@@ -64,7 +64,7 @@ func _handle_movement():
 		velocity.x = direction * speed
 		sprite.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = 0
 
 	if not _is_dead and is_on_floor():
 		sprite.play(&"run" if direction else &"idle")

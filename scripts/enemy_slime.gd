@@ -46,16 +46,28 @@ func _apply_sprite_frames():
 
 
 func _physics_process(delta: float):
-	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
-		velocity.x = move_toward(velocity.x, 0, delta)
-	else:
+	if _can_move():
 		velocity.x = _direction * speed
+	else:
+		if velocity.x:
+			# if can't move and has horizontal velocity
+			velocity.x = move_toward(velocity.x, 0, speed * delta)
+		if not is_on_floor():
+			# if can't move and not is on floor 
+			velocity.y += get_gravity().y * delta
 
 	move_and_slide()
 
-	if is_on_floor() and (wall_raycast.is_colliding() or is_far_from_start()):
+	if _can_move() and _should_turn_back():
 		flip()
+
+
+func _can_move() -> bool:
+	return is_on_floor() and not _is_dead
+
+
+func _should_turn_back() -> bool:
+	return wall_raycast.is_colliding() or is_far_from_start()
 
 
 func is_far_from_start() -> bool:

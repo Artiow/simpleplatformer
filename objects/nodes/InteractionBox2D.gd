@@ -12,7 +12,6 @@ extends Area2D
 @export var host: Node2D
 
 var collision_shape: CollisionShape2D
-var global_rect: Rect2: get = _get_global_rect
 
 
 func _ready():
@@ -39,5 +38,5 @@ func _init_host():
 				push_warning("Parent node %s cannot be set as a host node of %s." % [parent, self])
 
 
-func _get_global_rect() -> Rect2:
-	return collision_shape.shape.get_rect() * collision_shape.global_transform
+func get_global_rect() -> Rect2:
+	return collision_shape.global_transform * collision_shape.shape.get_rect()
