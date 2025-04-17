@@ -11,7 +11,7 @@ func _ready():
 	_update_label()
 
 
-func add_player_score(points: int = 1):
+func add_player_score(points: int):
 	_player_score += points
 	_update_label()
 	print_debug(self, ": points added = %.f, total = %.f" % [points, _player_score])

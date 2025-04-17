@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://fhgd56martub" path="res://assets/sounds/jump.wav" id="3_qhqgy"]
 [ext_resource type="Shape2D" uid="uid://pqp3vlpj8lk3" path="res://resources/player_shape.tres" id="3_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dijpdmxpk61uy" path="res://assets/sounds/hurt.wav" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://b27upa5mr6pag" path="res://objects/nodes/Collector2D.gd" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://b27upa5mr6pag" path="res://objects/nodes/2d/Collector2D.gd" id="5_fjrip"]
 [ext_resource type="Script" uid="uid://dqwowxtlmei2w" path="res://scripts/player_hurtbox.gd" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]

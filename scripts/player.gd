@@ -74,17 +74,17 @@ func can_jump() -> bool:
 	return not _is_dead and (is_on_floor() or _jump_count < jump_limit)
 
 
-func add_score(points: int = 1):
+func add_score(points: int):
 	game_manager.add_player_score(points)
 
 
-func _on_hurtbox_hit_reflected():
+func _on_hurtbox_hit_reflected(_hit_source: Hitbox2D):
 	_jump_count = 0
 	_jump()
 
 
-func _on_hurtbox_hit_received(attacker: Node2D):
-	_kill(attacker)
+func _on_hurtbox_hit_received(hit_source: InteractionBox2D):
+	_kill(hit_source.host)
 
 
 func _kill(killer: Node2D):
