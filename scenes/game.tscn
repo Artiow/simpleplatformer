@@ -203,6 +203,7 @@ autowrap_mode = 2
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera2D" parent="Player"]
 offset = Vector2(0, -8)
@@ -217,206 +218,273 @@ metadata/_edit_lock_ = true
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(1, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(15, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin3" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(71, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin4" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(57, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin5" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(25, -88)
+metadata/_edit_lock_ = true
 
 [node name="Coin6" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(39, -88)
+metadata/_edit_lock_ = true
 
 [node name="Coin7" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-344, -231)
+metadata/_edit_lock_ = true
 
 [node name="Coin8" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-328, -230)
+metadata/_edit_lock_ = true
 
 [node name="Coin9" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-312, -230)
+metadata/_edit_lock_ = true
 
 [node name="Coin10" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-296, -231)
+metadata/_edit_lock_ = true
 
 [node name="Coin11" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(200, -71)
+metadata/_edit_lock_ = true
 
 [node name="Coin12" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(216, -70)
+metadata/_edit_lock_ = true
 
 [node name="Coin13" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(232, -71)
+metadata/_edit_lock_ = true
 
 [node name="Coin14" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(313, -24)
+metadata/_edit_lock_ = true
 
 [node name="Coin15" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(327, -24)
+metadata/_edit_lock_ = true
 
 [node name="Coin16" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-153, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin17" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-167, -40)
+metadata/_edit_lock_ = true
 
 [node name="Coin18" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-296, -103)
+metadata/_edit_lock_ = true
 
 [node name="Coin19" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-296, -89)
+metadata/_edit_lock_ = true
 
 [node name="Coin20" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-282, -89)
+metadata/_edit_lock_ = true
 
 [node name="Coin21" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-282, -103)
+metadata/_edit_lock_ = true
 
 [node name="Coin22" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-310, -103)
+metadata/_edit_lock_ = true
 
 [node name="Coin23" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-310, -89)
+metadata/_edit_lock_ = true
 
 [node name="Coin24" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(216, -199)
+metadata/_edit_lock_ = true
 
 [node name="Coin25" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(232, -198)
+metadata/_edit_lock_ = true
 
 [node name="Coin26" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(248, -198)
+metadata/_edit_lock_ = true
 
 [node name="Coin27" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(264, -199)
+metadata/_edit_lock_ = true
 
 [node name="Coin28" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-503, -361)
+metadata/_edit_lock_ = true
 
 [node name="Coin29" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-503, -375)
+metadata/_edit_lock_ = true
 
 [node name="Coin30" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-489, -361)
+metadata/_edit_lock_ = true
 
 [node name="Coin31" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-489, -375)
+metadata/_edit_lock_ = true
 
 [node name="Coin32" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-475, -361)
+metadata/_edit_lock_ = true
 
 [node name="Coin33" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-475, -375)
+metadata/_edit_lock_ = true
 
 [node name="Coin34" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-517, -375)
+metadata/_edit_lock_ = true
 
 [node name="Coin35" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-517, -361)
+metadata/_edit_lock_ = true
 
 [node name="Coin36" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-712, -119)
+metadata/_edit_lock_ = true
 
 [node name="Coin37" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-696, -118)
+metadata/_edit_lock_ = true
 
 [node name="Coin38" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-680, -118)
+metadata/_edit_lock_ = true
 
 [node name="Coin39" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-664, -118)
+metadata/_edit_lock_ = true
 
 [node name="Coin40" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-648, -118)
+metadata/_edit_lock_ = true
 
 [node name="Coin41" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-632, -119)
+metadata/_edit_lock_ = true
 
 [node name="Coin42" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-895, -216)
+metadata/_edit_lock_ = true
 
 [node name="Coin43" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-902, -229)
+metadata/_edit_lock_ = true
 
 [node name="Coin44" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-914, -237)
+metadata/_edit_lock_ = true
 
 [node name="Coin45" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-928, -239)
+metadata/_edit_lock_ = true
 
 [node name="Coin46" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-942, -237)
+metadata/_edit_lock_ = true
 
 [node name="Coin47" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-954, -229)
+metadata/_edit_lock_ = true
 
 [node name="Coin48" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-961, -216)
+metadata/_edit_lock_ = true
 
 [node name="Coin49" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-1015, -200)
+metadata/_edit_lock_ = true
 
 [node name="Coin50" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-1001, -200)
+metadata/_edit_lock_ = true
 
 [node name="Coin51" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-1029, -200)
+metadata/_edit_lock_ = true
 
 [node name="Coin52" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-987, -200)
+metadata/_edit_lock_ = true
 
 [node name="Coin53" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-608, -216)
+metadata/_edit_lock_ = true
 
 [node name="Coin54" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-608, -232)
+metadata/_edit_lock_ = true
 
 [node name="Coin55" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-608, -248)
+metadata/_edit_lock_ = true
 
 [node name="Coin56" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-608, -264)
+metadata/_edit_lock_ = true
 
 [node name="Coin57" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-608, -280)
+metadata/_edit_lock_ = true
 
 [node name="Coin58" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-824, -199)
+metadata/_edit_lock_ = true
 
 [node name="Coin59" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-808, -198)
+metadata/_edit_lock_ = true
 
 [node name="Coin60" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(-792, -199)
+metadata/_edit_lock_ = true
 
 [node name="Coin61" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(448, -120)
+metadata/_edit_lock_ = true
 
 [node name="Coin62" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(448, -136)
+metadata/_edit_lock_ = true
 
 [node name="Coin63" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(448, -152)
+metadata/_edit_lock_ = true
 
 [node name="Coin64" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(448, -168)
+metadata/_edit_lock_ = true
 
 [node name="Coin65" parent="Coins" instance=ExtResource("4_lbhrr")]
 position = Vector2(448, -184)
+metadata/_edit_lock_ = true
 
 [node name="Platforms" type="Node" parent="."]
 
 [node name="PlatformBigGreen" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(32, -80)
+metadata/_edit_lock_ = true
 
 [node name="PlatformBigGreen2" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(64, -148)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/PlatformBigGreen2"]
 libraries = {
@@ -426,9 +494,11 @@ autoplay = "move_loop"
 
 [node name="PlatformBigGreen3" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(8, -32)
+metadata/_edit_lock_ = true
 
 [node name="PlatformBigGreen4" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(-528, -128)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/PlatformBigGreen4"]
 libraries = {
@@ -438,6 +508,7 @@ autoplay = "move_loop"
 
 [node name="PlatformBigGreen5" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(-608, -176)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/PlatformBigGreen5"]
 libraries = {
@@ -448,6 +519,7 @@ autoplay = "move_loop"
 [node name="PlatformBigMushroom" parent="Platforms" instance=ExtResource("3_feb5d")]
 position = Vector2(448, -16)
 sprite_texture = ExtResource("6_vtaks")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/PlatformBigMushroom"]
 libraries = {
@@ -459,18 +531,22 @@ autoplay = "move_loop"
 
 [node name="SlimeGreen" parent="Enemies" instance=ExtResource("6_p57ef")]
 position = Vector2(-200, -16)
+metadata/_edit_lock_ = true
 
 [node name="SlimeGreen2" parent="Enemies" instance=ExtResource("6_p57ef")]
 position = Vector2(0, -32)
+metadata/_edit_lock_ = true
 
 [node name="SlimeAmber" parent="Enemies" instance=ExtResource("6_p57ef")]
 position = Vector2(328, -176)
 sprite_frames = ExtResource("7_0tnpc")
+metadata/_edit_lock_ = true
 
 [node name="SlimeAmber2" parent="Enemies" instance=ExtResource("6_p57ef")]
 position = Vector2(248, -64)
 sprite_frames = ExtResource("7_0tnpc")
 max_distance = 128.0
+metadata/_edit_lock_ = true
 
 [node name="Labels" type="Node" parent="."]
 
