@@ -80,8 +80,8 @@ func flip():
 	sprite.flip_h = not sprite.flip_h
 
 
-func _on_hurtbox_hit_received(attacker: Node2D):
-	_kill(attacker)
+func _on_hurtbox_hit_received(hit_source: InteractionBox2D):
+	_kill(hit_source.host)
 
 
 func _kill(killer: Node2D):

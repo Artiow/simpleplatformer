@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var game_manager: GameManager = %GameManager
+@onready var level_root: LevelRoot = %LevelRoot
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
@@ -19,8 +19,14 @@ extends CharacterBody2D
 @export var jump_limit := 2
 @export var death_jump_velocity := -150.0
 
+var current_level: Level2D: get = _get_current_level
+
 var _jump_count := 0
 var _is_dead := false
+
+
+func _get_current_level() -> Level2D:
+	return level_root.current_level
 
 
 func _physics_process(delta: float):
@@ -74,17 +80,13 @@ func can_jump() -> bool:
 	return not _is_dead and (is_on_floor() or _jump_count < jump_limit)
 
 
-func add_score(points: int = 1):
-	game_manager.add_player_score(points)
-
-
-func _on_hurtbox_hit_reflected():
+func _on_hurtbox_hit_reflected(_hit_source: InteractionBox2D):
 	_jump_count = 0
 	_jump()
 
 
-func _on_hurtbox_hit_received(attacker: Node2D):
-	_kill(attacker)
+func _on_hurtbox_hit_received(hit_source: InteractionBox2D):
+	_kill(hit_source.host)
 
 
 func _kill(killer: Node2D):

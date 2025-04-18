@@ -9,4 +9,4 @@ func _can_apply_to(collector: Collector2D) -> bool:
 
 
 func _apply_to(collector: Collector2D):
-	(collector.actor as Player).add_score(value)
+	(collector.actor as Player).current_level.add_player_score(value)
