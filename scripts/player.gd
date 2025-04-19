@@ -80,7 +80,7 @@ func can_jump() -> bool:
 	return not _is_dead and (is_on_floor() or _jump_count < jump_limit)
 
 
-func _on_hurtbox_hit_reflected(_hit_source: InteractionBox2D):
+func _on_hurtbox_hit_reflected(_hit_source: Hitbox2D):
 	_jump_count = 0
 	_jump()
 
