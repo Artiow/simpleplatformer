@@ -1,16 +1,18 @@
-[gd_scene load_steps=31 format=4 uid="uid://bychx116r1vav"]
+[gd_scene load_steps=33 format=4 uid="uid://bychx116r1vav"]
 
 [ext_resource type="PackedScene" uid="uid://6eykw7iifspf" path="res://scenes/coin.tscn" id="1_4mrxx"]
+[ext_resource type="Script" uid="uid://dlncsxh7sqmmc" path="res://objects/nodes/2d/Level2D.gd" id="1_sk60w"]
 [ext_resource type="Texture2D" uid="uid://bry7hktvd7egy" path="res://assets/sprites/world_tileset.png" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://bwkfae01v83u6" path="res://scripts/level_0.gd" id="1_sk60w"]
 [ext_resource type="PackedScene" uid="uid://krgfsgu728jt" path="res://scenes/platform_big.tscn" id="2_7r4gi"]
+[ext_resource type="Script" uid="uid://bqgtvrfl8lnp1" path="res://objects/nodes/SpawnManager.gd" id="2_go7sj"]
+[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/SpawnPoint2D.gd" id="3_7gny6"]
 [ext_resource type="Texture2D" uid="uid://ojjmx461espb" path="res://resources/platform_sprite_texture_mushroom_big.tres" id="3_w7kh3"]
+[ext_resource type="Script" uid="uid://m0icfqs0dksx" path="res://objects/nodes/PlayerLevelSession.gd" id="4_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dyqmbo66567qp" path="res://scenes/enemy_slime.tscn" id="4_e3hyu"]
+[ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="5_171oe"]
 [ext_resource type="SpriteFrames" uid="uid://mfj2ogfcfohv" path="res://resources/slime_sprite_frames_amber.tres" id="5_q5onr"]
 [ext_resource type="FontFile" uid="uid://b7tdemnn470ev" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="6_jhx03"]
 [ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/2d/Hitbox2D.gd" id="7_o8fc1"]
-[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/SpawnPoint2D.gd" id="9_ll25s"]
-[ext_resource type="Script" uid="uid://bqgtvrfl8lnp1" path="res://objects/nodes/SpawnManager.gd" id="9_sk60w"]
 
 [sub_resource type="Animation" id="Animation_lbhrr"]
 length = 0.001
@@ -355,6 +357,20 @@ sources/0 = SubResource("TileSetAtlasSource_fj7yv")
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_sk60w")
 metadata/_custom_type_script = "uid://dlncsxh7sqmmc"
+
+[node name="SpawnManager" type="Node" parent="."]
+script = ExtResource("2_go7sj")
+metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
+
+[node name="SpawnPoint2D" type="Node2D" parent="SpawnManager"]
+script = ExtResource("3_7gny6")
+metadata/_custom_type_script = "uid://syxcpdlh4jqb"
+
+[node name="PlayerLevelSession" type="Node" parent="." node_paths=PackedStringArray("player_score_label")]
+script = ExtResource("4_2aecg")
+score_strategy = ExtResource("5_171oe")
+player_score_label = NodePath("../Labels/PlayerScoreLabel")
+metadata/_custom_type_script = "uid://m0icfqs0dksx"
 
 [node name="Coins" type="Node" parent="."]
 
@@ -744,14 +760,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_lakw3")
 metadata/_edit_lock_ = true
-
-[node name="SpawnManager" type="Node" parent="."]
-script = ExtResource("9_sk60w")
-metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
-
-[node name="SpawnPoint" type="Node2D" parent="SpawnManager"]
-script = ExtResource("9_ll25s")
-metadata/_custom_type_script = "uid://syxcpdlh4jqb"
 
 [node name="Front" type="TileMapLayer" parent="."]
 use_parent_material = true

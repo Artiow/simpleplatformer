@@ -299,4 +299,3 @@ metadata/_edit_lock_ = true
 
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
 [connection signal="hit_reflected" from="Hurtbox" to="." method="_on_hurtbox_hit_reflected"]
-[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

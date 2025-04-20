@@ -1,15 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var level_root: LevelRoot = %LevelRoot
-
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var hurtbox: Hurtbox2D = $Hurtbox
 @onready var collector: Collector2D = $Collector
 @onready var platform_raycast: RayCast2D = $PlatformRayCast
 
-@onready var kill_timer: Timer = $KillTimer
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
@@ -19,14 +16,10 @@ extends CharacterBody2D
 @export var jump_limit := 2
 @export var death_jump_velocity := -150.0
 
-var current_level: Level2D: get = _get_current_level
-
 var _jump_count := 0
 var _is_dead := false
 
-
-func _get_current_level() -> Level2D:
-	return level_root.current_level
+signal death()
 
 
 func _physics_process(delta: float):
@@ -92,10 +85,9 @@ func _on_hurtbox_hit_received(hit_source: InteractionBox2D):
 func _kill(killer: Node2D):
 	if not _is_dead and not godmode:
 		_is_dead = true
-		Engine.time_scale = 0.5
 		_handle_death()
-		kill_timer.start()
-		print_debug(self, " is killed by ", killer)
+		death.emit()
+		print_debug(get_path(), " is killed by ", killer.get_path())
 
 
 func _handle_death():
@@ -122,8 +114,3 @@ func _play_jump_animation():
 func _play_death_animation():
 	sprite.play(&"death", 2)
 	death_sound.play()
-
-
-func _on_kill_timer_timeout():
-	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()
