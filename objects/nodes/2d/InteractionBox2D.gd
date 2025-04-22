@@ -8,7 +8,7 @@ extends Area2D
 ## unless [member host] is explicitly set.
 @export var use_self_as_host := false
 ## An optional custom host node for this interaction box.
-## If set, this overrides both the parent node and [member use_self_as_host].
+## If set, this overrides both the owner and [member use_self_as_host].
 @export var host: Node2D
 
 var _rect: Rect2
@@ -19,7 +19,7 @@ func _ready():
 	_init_host()
 
 
-func _init_rect() -> void:
+func _init_rect():
 	# shapes actually is Array[CollisionShape2D]
 	var shapes := _find_child_collision_shapes()
 
@@ -38,16 +38,20 @@ func _find_child_collision_shapes() -> Array:
 	return find_children("*", &"CollisionShape2D", false).filter(func(e): return e is CollisionShape2D and e.shape != null)
 
 
-func _init_host():
-	if host == null:
-		if use_self_as_host:
-			host = self
-		else:
-			var parent := get_parent()
-			if parent is Node2D:
-				host = parent
-			else:
-				push_warning("Parent node %s cannot be set as an interaction host node of %s." % [parent, self])
+func _init_host() -> void:
+	if host != null:
+		return
+
+	if use_self_as_host:
+		host = self
+		return
+
+	if owner == null:
+		host = self
+	elif owner is Node2D:
+		host = owner
+	else:
+		push_warning("Owner node %s cannot be set as an interaction host node of %s." % [owner, self])
 
 
 func get_global_rect() -> Rect2:

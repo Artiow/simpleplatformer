@@ -1,35 +1,29 @@
 class_name Level2D
 extends Node2D
 
-@export var player_score_label: FormatLabel
-
-var _player_spawn_point: SpawnPoint2D
+var _spawn_manager: SpawnManager
 var _player_score := 0
 
 
 func _ready():
-	_init_player_spawn_point()
-	_update_player_score_label()
+	_spawn_manager = SceneUtils.find_singleton_child_in(self, &"SpawnManager") as SpawnManager
+	_on_player_score_update()
 
 
-func _init_player_spawn_point():
-	var spawn_array := find_children("*", &"SpawnPoint2D")
-	assert(not spawn_array.is_empty(), "no SpawnPoint2D found in level.")
-	_player_spawn_point = spawn_array[0]
-	if spawn_array.size() > 1:
-		push_warning("Multiple SpawnPoint2D nodes found. Using the first one.")
-
-
-func _update_player_score_label():
-	if player_score_label:
-		player_score_label.format([_player_score])
-
-
-func spawn_player(player: Player):
-	player.global_position = _player_spawn_point.global_position
+## Spawns the given [param character] in the level at the spawn point with the specified [param spawn_id].
+## Defaults to [code]&"default"[/code] spawn point if none is given.
+func spawn_character(character: CharacterBody2D, spawn_id: StringName = &"default"):
+	if _spawn_manager:
+		_spawn_manager.spawn_character(character, spawn_id)
+	else:
+		push_error("SpawnManager not initialized in the node tree of %s. Cannot spawn character %s." % [self, character])
 
 
 func add_player_score(points):
 	_player_score += points
-	_update_player_score_label()
+	_on_player_score_update()
 	print_debug(self, ": points added = %.f, total = %.f" % [points, _player_score])
+
+
+func _on_player_score_update():
+	pass # override to implement custom logic

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgurs1ip7goj" path="res://objects/nodes/LevelRoot.gd" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://jddfgvfucfsj" path="res://scenes/player.tscn" id="3_tefeu"]
-[ext_resource type="PackedScene" uid="uid://bychx116r1vav" path="res://scenes/level_1.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bychx116r1vav" path="res://scenes/level_0.tscn" id="4_o6xl0"]
 
 [node name="Main" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -25,5 +25,5 @@ script = ExtResource("2_sugp2")
 metadata/_custom_type_script = "uid://bgurs1ip7goj"
 metadata/_edit_lock_ = true
 
-[node name="Level1" parent="LevelRoot" instance=ExtResource("4_o6xl0")]
+[node name="Level0" parent="LevelRoot" instance=ExtResource("4_o6xl0")]
 metadata/_edit_lock_ = true
