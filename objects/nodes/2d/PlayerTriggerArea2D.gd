@@ -1,4 +1,4 @@
-class_name TriggerArea2D
+class_name PlayerTriggerArea2D
 extends Area2D
 
 @export var id: StringName = &"default"

@@ -354,7 +354,7 @@ metadata/_custom_type_script = "uid://dlncsxh7sqmmc"
 script = ExtResource("2_go7sj")
 metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
 
-[node name="SpawnPoint2D" type="Node2D" parent="SpawnManager"]
+[node name="SpawnPoint2D" type="Marker2D" parent="SpawnManager"]
 script = ExtResource("3_7gny6")
 metadata/_custom_type_script = "uid://syxcpdlh4jqb"
 
