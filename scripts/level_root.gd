@@ -21,6 +21,7 @@ func load_level(level_id: int):
 
 func _load_level(level_id: int):
 	if current_level:
+		current_level.level_exit.disconnect(_on_current_level_exit)
 		SceneUtils.free_node_from(current_level, self)
 	if player:
 		SceneUtils.detach_node_from(camera, player)
@@ -33,8 +34,13 @@ func _load_level(level_id: int):
 	SceneUtils.attach_node_to(player, self)
 	SceneUtils.attach_node_to(camera, player)
 
+	current_level.level_exit.connect(_on_current_level_exit)
 	current_level.spawn_character(player)
 	player.death.connect(_on_player_death)
+
+
+func _on_current_level_exit():
+	pass #todo
 
 
 func _instantiate_player() -> Player:
