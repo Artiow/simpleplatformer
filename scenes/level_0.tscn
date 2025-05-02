@@ -182,7 +182,7 @@ font_color = Color(0.0117647, 0.14902, 0.34902, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lakw3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_om4r1"]
 texture = ExtResource("1_f3sb7")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -347,7 +347,7 @@ texture = ExtResource("1_f3sb7")
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_fj7yv")
+sources/0 = SubResource("TileSetAtlasSource_om4r1")
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_sk60w")
@@ -357,7 +357,7 @@ metadata/_custom_type_script = "uid://dlncsxh7sqmmc"
 script = ExtResource("2_go7sj")
 metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
 
-[node name="SpawnPoint2D" type="Marker2D" parent="SpawnManager"]
+[node name="DefaultSpawnPoint" type="Marker2D" parent="SpawnManager"]
 script = ExtResource("3_7gny6")
 metadata/_custom_type_script = "uid://syxcpdlh4jqb"
 
@@ -715,6 +715,18 @@ metadata/_edit_lock_ = true
 
 [node name="Coin87" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(1350, -249)
+metadata/_edit_lock_ = true
+
+[node name="Coin88" parent="Coins" instance=ExtResource("1_4mrxx")]
+position = Vector2(1482, -216)
+metadata/_edit_lock_ = true
+
+[node name="Coin89" parent="Coins" instance=ExtResource("1_4mrxx")]
+position = Vector2(1496, -216)
+metadata/_edit_lock_ = true
+
+[node name="Coin90" parent="Coins" instance=ExtResource("1_4mrxx")]
+position = Vector2(1510, -216)
 metadata/_edit_lock_ = true
 
 [node name="Platforms" type="Node" parent="."]
