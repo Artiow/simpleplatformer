@@ -51,7 +51,14 @@ func _construct():
 
 
 func _post_construct():
-	current_level.spawn_character(player)
+	_spawn_player_on_current_level()
+
+
+func _spawn_player_on_current_level():
+	if current_level.spawn_manager:
+		current_level.spawn_manager.spawn_character(player)
+	else:
+		push_error("SpawnManager not initialized in the node tree of current level %s. Cannot spawn player %s." % [current_level.get_path(), player.get_path()])
 
 
 func _instantiate_player() -> Player:
