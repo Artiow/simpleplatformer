@@ -9,6 +9,8 @@ extends Node
 var player: Player
 var current_level: Level2D
 
+var _current_level_id: int
+
 
 func _ready():
 	SceneUtils.detach_node_from(camera, self)
@@ -20,27 +22,36 @@ func load_level(level_id: int):
 
 
 func _load_level(level_id: int):
+	_cleanup()
+	_current_level_id = level_id
+	_instantiate()
+	_construct()
+	_post_construct()
+
+
+func _cleanup():
 	if current_level:
-		current_level.level_exit.disconnect(_on_current_level_exit)
 		SceneUtils.free_node_from(current_level, self)
 	if player:
 		SceneUtils.detach_node_from(camera, player)
 		SceneUtils.free_node_from(player, self)
 
-	current_level = _instantiate_level(level_id)
+
+func _instantiate():
+	current_level = _instantiate_level(_current_level_id)
 	player = _instantiate_player()
 
-	SceneUtils.attach_node_to(current_level, self)
+
+func _construct():
 	SceneUtils.attach_node_to(player, self)
 	SceneUtils.attach_node_to(camera, player)
+	SignalUtils.connect_safely(player.death, _on_player_death, CONNECT_ONE_SHOT)
+	SceneUtils.attach_node_to(current_level, self)
+	SignalUtils.connect_safely(current_level.level_exit, _on_current_level_exit, CONNECT_ONE_SHOT)
 
-	current_level.level_exit.connect(_on_current_level_exit)
+
+func _post_construct():
 	current_level.spawn_character(player)
-	player.death.connect(_on_player_death)
-
-
-func _on_current_level_exit():
-	pass #todo
 
 
 func _instantiate_player() -> Player:
@@ -60,6 +71,14 @@ func _load_level_scene(level_id: int) -> PackedScene:
 	return load("res://scenes/level_%s.tscn" % level_id) as PackedScene
 
 
+func _on_current_level_exit():
+	_load_next_level()
+
+
+func _load_next_level():
+	load_level(_current_level_id + 1)
+
+
 func _on_player_death():
 	_restart()
 
@@ -71,4 +90,4 @@ func _restart():
 
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
-	load_level(0)
+	load_level(_current_level_id)
