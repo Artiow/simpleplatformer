@@ -16,6 +16,9 @@ extends CharacterBody2D
 @export var jump_limit := 2
 @export var death_jump_velocity := -150.0
 
+var control_locked := false
+var moving_direction := 0.0
+
 var _jump_count := 0
 var _is_dead := false
 
@@ -57,16 +60,17 @@ func _jump():
 
 
 func _handle_movement():
-	var direction := Input.get_axis(&"move_left", &"move_right")
+	if not control_locked:
+		moving_direction = Input.get_axis(&"move_left", &"move_right")
 
-	if not _is_dead and direction:
-		velocity.x = direction * speed
-		sprite.flip_h = direction < 0
+	if not _is_dead and moving_direction:
+		velocity.x = moving_direction * speed
+		sprite.flip_h = moving_direction < 0
 	else:
 		velocity.x = 0
 
 	if not _is_dead and is_on_floor():
-		sprite.play(&"run" if direction else &"idle")
+		sprite.play(&"run" if moving_direction else &"idle")
 
 
 func can_jump() -> bool:
