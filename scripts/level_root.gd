@@ -57,8 +57,14 @@ func _post_construct():
 func _spawn_player_on_current_level():
 	if current_level.spawn_manager:
 		current_level.spawn_manager.spawn_character(player)
+		_reset_camera_position()
 	else:
 		push_error("SpawnManager not initialized in the node tree of current level %s. Cannot spawn player %s." % [current_level.get_path(), player.get_path()])
+
+
+func _reset_camera_position():
+	camera.position = Vector2(0, 0)
+	camera.reset_smoothing()
 
 
 func _instantiate_player() -> Player:

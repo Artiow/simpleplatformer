@@ -361,6 +361,12 @@ metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
 script = ExtResource("3_7gny6")
 metadata/_custom_type_script = "uid://syxcpdlh4jqb"
 
+[node name="DebugSpawnPoint" type="Marker2D" parent="SpawnManager"]
+position = Vector2(1384, -208)
+script = ExtResource("3_7gny6")
+id = &"debug"
+metadata/_custom_type_script = "uid://syxcpdlh4jqb"
+
 [node name="PlayerLevelSession" type="Node" parent="." node_paths=PackedStringArray("player_score_label")]
 script = ExtResource("4_2aecg")
 score_strategy = ExtResource("5_171oe")

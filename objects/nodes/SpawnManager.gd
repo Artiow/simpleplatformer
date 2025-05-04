@@ -1,24 +1,26 @@
 class_name SpawnManager
 extends Node
 
-var _spawn_points: Dictionary[StringName, SpawnPoint2D] = {}
+@export var default_spawn_id := &"default"
+
+@onready var _spawn_points: Dictionary[StringName, SpawnPoint2D] = _collect_spawn_points()
 
 
-func _ready():
-	_init_spawn_points()
-
-
-func _init_spawn_points():
+func _collect_spawn_points() -> Dictionary[StringName, SpawnPoint2D]:
+	var spawn_points: Dictionary[StringName, SpawnPoint2D] = {}
 	for node in find_children("*", &"SpawnPoint2D"):
+		if not node is SpawnPoint2D:
+			continue
 		var spawn_point := node as SpawnPoint2D
-		if _spawn_points.has(spawn_point.id):
+		if spawn_points.has(spawn_point.id):
 			push_warning("Duplicate spawn point id: %s" % spawn_point.id)
-		_spawn_points[spawn_point.id] = spawn_point
+		spawn_points[spawn_point.id] = spawn_point
+	return spawn_points
 
 
 ## Spawns the given [param character] at the spawn point with the specified [param spawn_id].
-## Defaults to [code]&"default"[/code] spawn point if none is given.
-func spawn_character(character: CharacterBody2D, spawn_id: StringName = &"default"):
+## Defaults to [member default_spawn_id] spawn point if none is given.
+func spawn_character(character: CharacterBody2D, spawn_id: StringName = default_spawn_id):
 	var spawn_point = _spawn_points.get(spawn_id)
 	if spawn_point is SpawnPoint2D:
 		_spawn_character_at(character, spawn_point)
