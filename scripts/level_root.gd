@@ -4,8 +4,10 @@ extends Node
 @export var player_scene: PackedScene
 
 @onready var camera: Camera2D = $Camera
+
+@onready var level_enter_timer: Timer = $LevelEnterTimer
 @onready var restart_timer: Timer = $RestartTimer
-@onready var next_level_timer: Timer = $NextLevelTimer
+@onready var level_exit_timer: Timer = $LevelExitTimer
 
 var player: Player
 var current_level: Level2D
@@ -93,7 +95,7 @@ func _on_current_level_exit():
 func _load_next_level():
 	player.control_locked = true
 	player.moving_direction = 1.0
-	next_level_timer.start()
+	level_exit_timer.start()
 
 
 func _on_player_death():
@@ -105,12 +107,16 @@ func _restart():
 	restart_timer.start()
 
 
+func _on_level_enter_timer_timeout():
+	pass #todo
+
+
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
 	load_level(_current_level_id)
 
 
-func _on_next_level_timer_timeout() -> void:
+func _on_level_exit_timer_timeout() -> void:
 	player.moving_direction = 0.0
 	player.control_locked = false
 	load_level(_current_level_id + 1)
