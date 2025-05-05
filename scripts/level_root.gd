@@ -5,6 +5,7 @@ extends Node
 
 @onready var camera: Camera2D = $Camera
 @onready var restart_timer: Timer = $RestartTimer
+@onready var next_level_timer: Timer = $NextLevelTimer
 
 var player: Player
 var current_level: Level2D
@@ -57,6 +58,7 @@ func _post_construct():
 func _spawn_player_on_current_level():
 	if current_level.spawn_manager:
 		current_level.spawn_manager.spawn_character(player)
+		current_level.sync_camera_limits(camera)
 		_reset_camera_position()
 	else:
 		push_error("SpawnManager not initialized in the node tree of current level %s. Cannot spawn player %s." % [current_level.get_path(), player.get_path()])
@@ -89,7 +91,9 @@ func _on_current_level_exit():
 
 
 func _load_next_level():
-	load_level(_current_level_id + 1)
+	player.control_locked = true
+	player.moving_direction = 1.0
+	next_level_timer.start()
 
 
 func _on_player_death():
@@ -104,3 +108,9 @@ func _restart():
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
 	load_level(_current_level_id)
+
+
+func _on_next_level_timer_timeout() -> void:
+	player.moving_direction = 0.0
+	player.control_locked = false
+	load_level(_current_level_id + 1)

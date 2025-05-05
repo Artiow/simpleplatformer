@@ -23,4 +23,8 @@ metadata/_edit_lock_ = true
 wait_time = 0.5
 one_shot = true
 
+[node name="NextLevelTimer" type="Timer" parent="LevelRoot"]
+one_shot = true
+
 [connection signal="timeout" from="LevelRoot/RestartTimer" to="LevelRoot" method="_on_restart_timer_timeout"]
+[connection signal="timeout" from="LevelRoot/NextLevelTimer" to="LevelRoot" method="_on_next_level_timer_timeout"]
