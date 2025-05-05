@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5y1qc6mir22h"]
+
+[ext_resource type="PackedScene" uid="uid://cmvelqhysjkwg" path="res://scenes/core/player_trigger.tscn" id="1_amlj4"]
+[ext_resource type="Script" uid="uid://c4wk06ltkfkjm" path="res://scenes/core/level_exit.gd" id="1_vt424"]
+
+[node name="LevelExit" type="Node2D"]
+script = ExtResource("1_vt424")
+
+[node name="EnterTrigger" parent="." instance=ExtResource("1_amlj4")]
+
+[node name="ExitTrigger" parent="." instance=ExtResource("1_amlj4")]
+position = Vector2(128, 0)
+monitoring = false
+is_active = false
