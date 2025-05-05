@@ -55,6 +55,7 @@ func _construct():
 
 func _post_construct():
 	_spawn_player_on_current_level()
+	_on_current_level_enter()
 
 
 func _spawn_player_on_current_level():
@@ -88,11 +89,16 @@ func _load_level_scene(level_id: int) -> PackedScene:
 	return load("res://scenes/level_%s.tscn" % level_id) as PackedScene
 
 
+func _on_current_level_enter() -> void:
+	if not _current_level_id:
+		return # temporary hack for 0 level
+
+	player.control_locked = true
+	player.moving_direction = 1.0
+	level_enter_timer.start()
+
+
 func _on_current_level_exit():
-	_load_next_level()
-
-
-func _load_next_level():
 	player.control_locked = true
 	player.moving_direction = 1.0
 	level_exit_timer.start()
@@ -107,16 +113,17 @@ func _restart():
 	restart_timer.start()
 
 
-func _on_level_enter_timer_timeout():
-	pass #todo
-
-
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
 	load_level(_current_level_id)
 
 
-func _on_level_exit_timer_timeout() -> void:
+func _on_level_enter_timer_timeout():
+	player.moving_direction = 0.0
+	player.control_locked = false
+
+
+func _on_level_exit_timer_timeout():
 	player.moving_direction = 0.0
 	player.control_locked = false
 	load_level(_current_level_id + 1)
