@@ -351,7 +351,7 @@ sources/0 = SubResource("TileSetAtlasSource_om4r1")
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_sk60w")
-border_right = 1664
+border_right = 1672
 metadata/_custom_type_script = "uid://dlncsxh7sqmmc"
 
 [node name="SpawnManager" type="Node" parent="."]
