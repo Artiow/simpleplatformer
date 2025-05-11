@@ -1,7 +1,10 @@
 class_name PlayerTrigger
 extends Area2D
 
-@export var is_active := true
+@export var is_active := true:
+	set(value):
+		is_active = value
+		set_deferred(&"monitoring", value)
 
 signal triggered(player: Player)
 

@@ -7,7 +7,6 @@ extends Node
 
 @onready var level_enter_timer: Timer = $LevelEnterTimer
 @onready var restart_timer: Timer = $RestartTimer
-@onready var level_exit_timer: Timer = $LevelExitTimer
 
 var player: Player
 var current_level: Level2D
@@ -50,7 +49,7 @@ func _construct():
 	SceneUtils.attach_node_to(camera, player)
 	SignalUtils.connect_safely(player.death, _on_player_death, CONNECT_ONE_SHOT)
 	SceneUtils.attach_node_to(current_level, self)
-	SignalUtils.connect_safely(current_level.level_exit, _on_current_level_exit, CONNECT_ONE_SHOT)
+	SignalUtils.connect_safely(current_level.exit, _on_current_level_exit, CONNECT_ONE_SHOT)
 
 
 func _post_construct():
@@ -99,9 +98,7 @@ func _on_current_level_enter() -> void:
 
 
 func _on_current_level_exit():
-	player.control_locked = true
-	player.moving_direction = 1.0
-	level_exit_timer.start()
+	load_level(_current_level_id + 1)
 
 
 func _on_player_death():
@@ -121,9 +118,3 @@ func _on_restart_timer_timeout():
 func _on_level_enter_timer_timeout():
 	player.moving_direction = 0.0
 	player.control_locked = false
-
-
-func _on_level_exit_timer_timeout():
-	player.moving_direction = 0.0
-	player.control_locked = false
-	load_level(_current_level_id + 1)

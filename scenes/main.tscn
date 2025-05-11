@@ -26,9 +26,5 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="LevelExitTimer" type="Timer" parent="LevelRoot"]
-one_shot = true
-
 [connection signal="timeout" from="LevelRoot/LevelEnterTimer" to="LevelRoot" method="_on_level_enter_timer_timeout"]
 [connection signal="timeout" from="LevelRoot/RestartTimer" to="LevelRoot" method="_on_restart_timer_timeout"]
-[connection signal="timeout" from="LevelRoot/LevelExitTimer" to="LevelRoot" method="_on_level_exit_timer_timeout"]
