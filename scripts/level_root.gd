@@ -5,7 +5,6 @@ extends Node
 
 @onready var camera: Camera2D = $Camera
 
-@onready var level_enter_timer: Timer = $LevelEnterTimer
 @onready var restart_timer: Timer = $RestartTimer
 
 var player: Player
@@ -28,7 +27,7 @@ func _load_level(level_id: int):
 	_current_level_id = level_id
 	_instantiate()
 	_construct()
-	_post_construct()
+	_on_current_level_enter()
 
 
 func _cleanup():
@@ -52,9 +51,8 @@ func _construct():
 	SignalUtils.connect_safely(current_level.exit, _on_current_level_exit, CONNECT_ONE_SHOT)
 
 
-func _post_construct():
+func _on_current_level_enter():
 	_spawn_player_on_current_level()
-	_on_current_level_enter()
 
 
 func _spawn_player_on_current_level():
@@ -88,15 +86,6 @@ func _load_level_scene(level_id: int) -> PackedScene:
 	return load("res://scenes/level_%s.tscn" % level_id) as PackedScene
 
 
-func _on_current_level_enter() -> void:
-	if not _current_level_id:
-		return # temporary hack for 0 level
-
-	player.control_locked = true
-	player.moving_direction = 1.0
-	level_enter_timer.start()
-
-
 func _on_current_level_exit():
 	load_level(_current_level_id + 1)
 
@@ -113,8 +102,3 @@ func _restart():
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
 	load_level(_current_level_id)
-
-
-func _on_level_enter_timer_timeout():
-	player.moving_direction = 0.0
-	player.control_locked = false
