@@ -59,7 +59,7 @@ func _post_construct():
 
 func _spawn_player_on_current_level():
 	if current_level.spawn_manager:
-		current_level.spawn_manager.spawn_character(player)
+		current_level.spawn_manager.spawn_player(player)
 		current_level.sync_camera_limits(camera)
 		_reset_camera_position()
 	else:

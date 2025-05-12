@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bry7hktvd7egy" path="res://assets/sprites/world_tileset.png" id="2_bswci"]
 [ext_resource type="Script" uid="uid://bqgtvrfl8lnp1" path="res://objects/nodes/SpawnManager.gd" id="2_pa8r4"]
 [ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/2d/Hitbox2D.gd" id="2_rus8k"]
-[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/SpawnPoint2D.gd" id="3_15mv3"]
+[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/Spawn2D.gd" id="3_15mv3"]
 [ext_resource type="Script" uid="uid://m0icfqs0dksx" path="res://objects/nodes/PlayerLevelSession.gd" id="4_e3sih"]
 [ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="5_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://dyqmbo66567qp" path="res://scenes/enemy_slime.tscn" id="6_e3sih"]
