@@ -45,7 +45,6 @@ func _instantiate():
 
 func _construct():
 	SceneUtils.attach_node_to(player, self)
-	SceneUtils.attach_node_to(camera, player)
 	SignalUtils.connect_safely(player.death, _on_player_death, CONNECT_ONE_SHOT)
 	SceneUtils.attach_node_to(current_level, self)
 	SignalUtils.connect_safely(current_level.exit, _on_current_level_exit, CONNECT_ONE_SHOT)
@@ -58,15 +57,17 @@ func _on_current_level_enter():
 func _spawn_player_on_current_level():
 	if current_level.spawn_manager:
 		current_level.spawn_manager.spawn_player(player)
-		current_level.sync_camera_limits(camera)
-		_reset_camera_position()
+		_install_camera_on_current_level()
 	else:
 		push_error("SpawnManager not initialized in the node tree of current level %s. Cannot spawn player %s." % [current_level.get_path(), player.get_path()])
 
 
-func _reset_camera_position():
-	camera.position = Vector2(0, 0)
-	camera.reset_smoothing()
+func _install_camera_on_current_level():
+	if not camera.owner:
+		current_level.sync_camera_limits(camera)
+		Camera2DUtils.attach_camera_to(camera, player)
+	else:
+		push_error("%s already istalled within the node tree of player %s." % [camera.get_path(), player.get_path()])
 
 
 func _instantiate_player() -> Player:
