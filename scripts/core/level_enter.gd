@@ -15,7 +15,6 @@ signal reached(player: Player)
 
 func _ready():
 	LevelEnter._sync_scale(self)
-	set_physics_process(false)
 
 
 func place(player: Player):
@@ -25,12 +24,11 @@ func place(player: Player):
 
 func _on_place(player: Player):
 	player.lock_movement(scale.x)
-	set_physics_process(true)
+	PhysicsFrameScheduler.start_one_shot(self, _enable_enter_trigger)
 
 
-func _physics_process(_delta: float):
+func _enable_enter_trigger():
 	enter_trigger.is_active = true
-	set_physics_process(false)
 
 
 func _on_enter_trigger_triggered(player: Player):
