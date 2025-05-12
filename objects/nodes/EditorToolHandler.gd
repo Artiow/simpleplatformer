@@ -5,10 +5,18 @@ extends Node
 @export_group("Property Monitoring", "monitored_")
 ## Optional custom node to monitor.
 ## If set, it overrides [member owner] as the monitored node.
-@export var monitored_node: Node
+@export var monitored_node: Node:
+	set(value):
+		monitored_node = value
+		_init_monitoring()
 ## List of property names to monitor for changes in the editor.
-@export var monitored_properties: Array[StringName] = []
+@export var monitored_properties: Array[StringName]:
+	set(value):
+		monitored_properties = value
+		_init_monitoring()
 
+var _monitored_node: Node
+var _monitored_properties: Array[StringName]
 var _last_hash: int
 
 
@@ -17,7 +25,6 @@ func _ready() -> void:
 		_extinguish()
 		return
 
-	_init_monitored_node()
 	_init_monitoring()
 
 
@@ -26,18 +33,14 @@ func _extinguish():
 	queue_free()
 
 
-func _init_monitored_node():
-	if not monitored_node and owner is Node:
-		monitored_node = owner
-
-
 func _init_monitoring():
-	monitored_properties = EditorToolHandler._filter_existing_properties(monitored_node, monitored_properties)
-	_last_hash = EditorToolHandler._calculate_hash(monitored_node, monitored_properties)
+	_monitored_node = monitored_node if monitored_node else owner
+	_monitored_properties = EditorToolHandler._filter_existing_properties(_monitored_node, monitored_properties)
+	_last_hash = EditorToolHandler._calculate_hash(_monitored_node, _monitored_properties)
 
 
 func _process(_delta: float):
-	var current_hash := EditorToolHandler._calculate_hash(monitored_node, monitored_properties)
+	var current_hash := EditorToolHandler._calculate_hash(_monitored_node, _monitored_properties)
 	if current_hash != _last_hash:
 		_last_hash = current_hash
 		_apply_editor_changes()

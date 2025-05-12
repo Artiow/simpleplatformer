@@ -16,9 +16,8 @@ monitoring = false
 is_active = false
 metadata/_edit_lock_ = true
 
-[node name="EditorToolHandler" type="Node" parent="." node_paths=PackedStringArray("monitored_node")]
+[node name="EditorToolHandler" type="Node" parent="."]
 script = ExtResource("3_asxi6")
-monitored_node = NodePath("..")
 monitored_properties = Array[StringName]([&"direction"])
 metadata/_custom_type_script = "uid://w1jhy80v1ww4"
 

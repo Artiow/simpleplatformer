@@ -9,7 +9,7 @@ extends Node
 func _collect_spawn_points() -> Dictionary[StringName, SpawnPoint2D]:
 	var spawn_points: Dictionary[StringName, SpawnPoint2D] = {}
 	for node in find_children("*", &"SpawnPoint2D"):
-		if not node is SpawnPoint2D:
+		if node is not SpawnPoint2D:
 			continue
 		var spawn_point := node as SpawnPoint2D
 		if spawn_points.has(spawn_point.id):
