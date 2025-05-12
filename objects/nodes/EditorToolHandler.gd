@@ -68,7 +68,7 @@ static func _filter_existing_properties(node: Node, property_name_array: Array[S
 
 	var result: Array[StringName] = []
 	for property_name in property_name_array:
-		if property_name_set.has(property_name):
+		if property_name_set.erase(property_name):
 			result.append(property_name)
 
 	return result

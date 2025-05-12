@@ -15,6 +15,10 @@ signal entered(player: Player)
 signal reached(player: Player)
 
 
+func _ready():
+	LevelExit._sync_scale(self)
+
+
 func _on_enter_trigger_triggered(player: Player):
 	player.control_locked = true
 	player.moving_direction = scale.x
@@ -33,3 +37,4 @@ func _on_exit_trigger_triggered(player: Player):
 
 static func _sync_scale(this: LevelExit):
 	this.scale.x = 1.0 if this.direction else -1.0
+	this.scale.y = 1.0

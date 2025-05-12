@@ -11,6 +11,7 @@ signal triggered(player: Player)
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	monitoring = is_active
 
 
 func _on_body_entered(body: Node2D):
