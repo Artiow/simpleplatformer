@@ -4,10 +4,14 @@ extends Node
 @export var player_scene: PackedScene
 
 @onready var camera: Camera2D = $Camera
+
+@onready var level_enter_timer: Timer = $LevelEnterTimer
 @onready var restart_timer: Timer = $RestartTimer
 
 var player: Player
 var current_level: Level2D
+
+var _current_level_id: int
 
 
 func _ready():
@@ -20,21 +24,51 @@ func load_level(level_id: int):
 
 
 func _load_level(level_id: int):
+	_cleanup()
+	_current_level_id = level_id
+	_instantiate()
+	_construct()
+	_post_construct()
+
+
+func _cleanup():
 	if current_level:
 		SceneUtils.free_node_from(current_level, self)
 	if player:
 		SceneUtils.detach_node_from(camera, player)
 		SceneUtils.free_node_from(player, self)
 
-	current_level = _instantiate_level(level_id)
+
+func _instantiate():
+	current_level = _instantiate_level(_current_level_id)
 	player = _instantiate_player()
 
-	SceneUtils.attach_node_to(current_level, self)
+
+func _construct():
 	SceneUtils.attach_node_to(player, self)
 	SceneUtils.attach_node_to(camera, player)
+	SignalUtils.connect_safely(player.death, _on_player_death, CONNECT_ONE_SHOT)
+	SceneUtils.attach_node_to(current_level, self)
+	SignalUtils.connect_safely(current_level.exit, _on_current_level_exit, CONNECT_ONE_SHOT)
 
-	current_level.spawn_character(player)
-	player.death.connect(_on_player_death)
+
+func _post_construct():
+	_spawn_player_on_current_level()
+	_on_current_level_enter()
+
+
+func _spawn_player_on_current_level():
+	if current_level.spawn_manager:
+		current_level.spawn_manager.spawn_character(player)
+		current_level.sync_camera_limits(camera)
+		_reset_camera_position()
+	else:
+		push_error("SpawnManager not initialized in the node tree of current level %s. Cannot spawn player %s." % [current_level.get_path(), player.get_path()])
+
+
+func _reset_camera_position():
+	camera.position = Vector2(0, 0)
+	camera.reset_smoothing()
 
 
 func _instantiate_player() -> Player:
@@ -54,6 +88,19 @@ func _load_level_scene(level_id: int) -> PackedScene:
 	return load("res://scenes/level_%s.tscn" % level_id) as PackedScene
 
 
+func _on_current_level_enter() -> void:
+	if not _current_level_id:
+		return # temporary hack for 0 level
+
+	player.control_locked = true
+	player.moving_direction = 1.0
+	level_enter_timer.start()
+
+
+func _on_current_level_exit():
+	load_level(_current_level_id + 1)
+
+
 func _on_player_death():
 	_restart()
 
@@ -65,4 +112,9 @@ func _restart():
 
 func _on_restart_timer_timeout():
 	Engine.time_scale = 1
-	load_level(0)
+	load_level(_current_level_id)
+
+
+func _on_level_enter_timer_timeout():
+	player.moving_direction = 0.0
+	player.control_locked = false

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://pmsd37knqmwk"]
+
+[ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/2d/Hitbox2D.gd" id="1_6bl04"]
+[ext_resource type="Shape2D" uid="uid://331htdegvi2n" path="res://resources/core/simple_horizontal_world_boundary_shape_2d.tres" id="2_ex3tg"]
+
+[node name="Abyss" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_6bl04")
+use_self_as_host = true
+metadata/_custom_type_script = "uid://dj2gcyhf1k0ed"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_ex3tg")
+metadata/_edit_lock_ = true

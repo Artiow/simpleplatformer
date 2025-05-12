@@ -18,10 +18,7 @@ func _ready():
 
 func _init_score_processing():
 	if score_strategy:
-		var score_awarded_signal := score_strategy.score_awarded 
-		if not score_awarded_signal.is_connected(_on_score_awarded):
-			score_awarded_signal.connect(_on_score_awarded)
-			print_debug("%s connected to %s signal" % [get_path(), score_awarded_signal.get_name()])
+		SignalUtils.reconnect_safely(score_strategy.score_awarded, _on_score_awarded)
 	else:
 		push_warning("ScoreStrategy is not assigned in %s. Player score cannot be processed." % get_path())
 
@@ -48,7 +45,4 @@ func _update_player_score_label():
 
 func _exit_tree():
 	if score_strategy:
-		var score_awarded_signal := score_strategy.score_awarded
-		if score_awarded_signal.is_connected(_on_score_awarded):
-			score_awarded_signal.disconnect(_on_score_awarded)
-			print_debug("%s disconnected from %s signal" % [get_path(), score_awarded_signal.get_name()])
+		SignalUtils.disconnect_safely(score_strategy.score_awarded, _on_score_awarded)

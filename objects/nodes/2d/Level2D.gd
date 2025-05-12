@@ -1,19 +1,27 @@
 class_name Level2D
 extends Node2D
 
-var _spawn_manager: SpawnManager
-var _player_session: PlayerLevelSession
+@export_group("Border", "border_")
+@export var border_bottom := 10000000
+@export var border_left := -10000000
+@export var border_right := 10000000
+@export var border_top := -10000000
+
+@onready var spawn_manager: SpawnManager = SceneUtils.find_singleton_child_in(self, &"SpawnManager")
+
+## Emitted when the player exits the level.
+signal exit()
 
 
-func _ready():
-	_spawn_manager = SceneUtils.find_singleton_child_in(self, &"SpawnManager") as SpawnManager
-	_player_session = SceneUtils.find_singleton_child_in(self, &"PlayerLevelSession") as PlayerLevelSession
+## This method should be connected to the [signal reached]
+## of the [LevelExit] node responsible for leaving the current level.
+func _on_level_exit_reached(player: Player):
+	print_debug("%s reached the level %s exit" % [player.get_path(), get_path()])
+	exit.emit()
 
 
-## Spawns the given [param character] in the level at the spawn point with the specified [param spawn_id].
-## Defaults to [code]&"default"[/code] spawn point if none is given.
-func spawn_character(character: CharacterBody2D, spawn_id: StringName = &"default"):
-	if _spawn_manager:
-		_spawn_manager.spawn_character(character, spawn_id)
-	else:
-		push_error("SpawnManager not initialized in the node tree of %s. Cannot spawn character %s." % [get_path(), character.get_path()])
+func sync_camera_limits(camera: Camera2D):
+	camera.limit_bottom = border_bottom
+	camera.limit_left = border_left
+	camera.limit_right = border_right
+	camera.limit_top = border_top
