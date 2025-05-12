@@ -20,16 +20,14 @@ func _ready():
 
 
 func _on_enter_trigger_triggered(player: Player):
-	player.control_locked = true
-	player.moving_direction = scale.x
+	player.lock_movement(scale.x)
 	enter_trigger.is_active = false
 	exit_trigger.is_active = true
 	entered.emit(player)
 
 
 func _on_exit_trigger_triggered(player: Player):
-	player.moving_direction = 0.0
-	player.control_locked = false
+	player.unlock_movement()
 	exit_trigger.is_active = false
 	enter_trigger.is_active = true
 	reached.emit(player)

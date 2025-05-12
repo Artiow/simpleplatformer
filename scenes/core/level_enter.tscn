@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://0a4sygyy53my"]
+
+[ext_resource type="Script" uid="uid://dqt5jl2mm4o5k" path="res://scripts/core/level_enter.gd" id="1_xv68e"]
+[ext_resource type="PackedScene" uid="uid://cmvelqhysjkwg" path="res://scenes/core/player_trigger.tscn" id="2_61fq5"]
+[ext_resource type="Script" uid="uid://ck5j270prkio8" path="res://scripts/core/level_enter.editor_tool_handler.gd" id="3_61fq5"]
+
+[node name="LevelEnter" type="Marker2D"]
+script = ExtResource("1_xv68e")
+metadata/_custom_type_script = "uid://syxcpdlh4jqb"
+
+[node name="EnterTrigger" parent="." instance=ExtResource("2_61fq5")]
+position = Vector2(128, 0)
+monitoring = false
+is_active = false
+metadata/_edit_lock_ = true
+
+[node name="EditorToolHandler" type="Node" parent="."]
+script = ExtResource("3_61fq5")
+monitored_properties = Array[StringName]([&"direction"])
+metadata/_custom_type_script = "uid://w1jhy80v1ww4"
+
+[connection signal="triggered" from="EnterTrigger" to="." method="_on_enter_trigger_triggered"]
