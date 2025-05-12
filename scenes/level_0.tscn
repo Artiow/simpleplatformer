@@ -861,6 +861,7 @@ metadata/_edit_lock_ = true
 
 [node name="LevelEnter" parent="." instance=ExtResource("10_171oe")]
 position = Vector2(-1224, 0)
+metadata/_edit_lock_ = true
 
 [node name="LevelExit" parent="." instance=ExtResource("13_171oe")]
 position = Vector2(1544, -208)
