@@ -1,3 +1,4 @@
+@icon("res://icons/Level2D.svg")
 class_name Level2D
 extends Node2D
 
