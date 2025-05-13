@@ -5,7 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://cbaqneb5rhios" path="res://resources/slime_shape.tres" id="3_aelh5"]
 [ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/2d/Hitbox2D.gd" id="4_y5ckx"]
 [ext_resource type="Script" uid="uid://5miol22apxl6" path="res://objects/nodes/2d/Hurtbox2D.gd" id="6_afdiv"]
-[ext_resource type="AudioStream" uid="uid://dijpdmxpk61uy" path="res://assets/sounds/hurt.wav" id="6_mo75l"]
+[ext_resource type="AudioStream" uid="uid://bjmbn3ynbervl" path="res://assets/sounds/hurt.wav" id="6_mo75l"]
 
 [node name="EnemySlime" type="CharacterBody2D"]
 z_index = 9

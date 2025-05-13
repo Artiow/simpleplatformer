@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://6eykw7iifspf"]
 
 [ext_resource type="Script" uid="uid://d0qsalst3hu80" path="res://scripts/coin.gd" id="1_i64fm"]
-[ext_resource type="Texture2D" uid="uid://cm6us20qrg0ks" path="res://assets/sprites/coin.png" id="1_rwqht"]
+[ext_resource type="Texture2D" uid="uid://b1ee30nllwbng" path="res://assets/sprites/coin.png" id="1_rwqht"]
 [ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="2_d14el"]
-[ext_resource type="AudioStream" uid="uid://ei8ixnoy4ucp" path="res://assets/sounds/coin.wav" id="3_11l1o"]
+[ext_resource type="AudioStream" uid="uid://bojqveifg7yru" path="res://assets/sounds/coin.wav" id="3_11l1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i64fm"]
 atlas = ExtResource("1_rwqht")
