@@ -2,9 +2,8 @@
 .godot/
 *.import
 /android/
-
-# Godot adddons ignores
 addons/
+export_presets.cfg
 
 # IntelliJ IDEA specific ignores
 .idea/
