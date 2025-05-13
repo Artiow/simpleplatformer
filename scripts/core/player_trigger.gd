@@ -1,3 +1,4 @@
+@icon("res://icons/PlayerTrigger.svg")
 class_name PlayerTrigger
 extends Area2D
 
