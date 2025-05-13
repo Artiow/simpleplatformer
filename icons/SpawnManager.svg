@@ -1,110 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="16"
-   height="16"
-   version="1.1"
-   id="svg1"
-   sodipodi:docname="SpawnManager.svg"
-   inkscape:version="1.4.2 (2aeb623e1d, 2025-05-12)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1">
-    <inkscape:path-effect
-       effect="powerclip"
-       message=""
-       id="path-effect2"
-       is_visible="true"
-       lpeversion="1"
-       inverse="true"
-       flatten="false"
-       hide_clip="false" />
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath2">
-      <rect
-         style="display:none;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.65379;stroke-dasharray:2.89413, 0.826888;stroke-dashoffset:0.826888"
-         id="rect2"
-         width="12"
-         height="7"
-         x="2"
-         y="6"
-         ry="1"
-         d="m 3,6 h 10 c 0.554,0 1,0.446 1,1 v 5 c 0,0.554 -0.446,1 -1,1 H 3 C 2.446,13 2,12.554 2,12 V 7 C 2,6.446 2.446,6 3,6 Z" />
-      <path
-         id="lpe_path-effect2"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.65379;stroke-dasharray:2.89413, 0.826888;stroke-dashoffset:0.826888"
-         class="powerclip"
-         d="M -4,-3 H 20 V 19 H -4 Z M 3,6 C 2.446,6 2,6.446 2,7 v 5 c 0,0.554 0.446,1 1,1 h 10 c 0.554,0 1,-0.446 1,-1 V 7 C 14,6.446 13.554,6 13,6 Z" />
-    </clipPath>
-  </defs>
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="32.968854"
-     inkscape:cx="3.2909849"
-     inkscape:cy="8.5231959"
-     inkscape:window-width="1704"
-     inkscape:window-height="996"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1"
-     showgrid="true">
-    <inkscape:grid
-       id="grid1"
-       units="px"
-       originx="0"
-       originy="0"
-       spacingx="1"
-       spacingy="1"
-       empcolor="#0099e5"
-       empopacity="0.30196078"
-       color="#0099e5"
-       opacity="0.14901961"
-       empspacing="5"
-       enabled="true"
-       visible="true" />
-  </sodipodi:namedview>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+  <clipPath id="b">
+    <path d="M -4,-3 H 20 V 19 H -4 Z M 3,6 C 2.446,6 2,6.446 2,7 v 5 c 0,0.554 0.446,1 1,1 h 10 c 0.554,0 1,-0.446 1,-1 V 7 C 14,6.446 13.554,6 13,6 Z"/>
+  </clipPath>
   <path
      fill="#e0e0e0"
      d="M 2,2 A 1,1 0 0 0 1,3 v 10 a 1,1 0 0 0 1,1 h 12 a 1,1 0 0 0 1,-1 V 6 A 1,1 0 0 0 14,5 H 10 A 1,1 0 0 1 9,4 V 3 A 1,1 0 0 0 8,2 Z"
-     id="path1"
-     clip-path="url(#clipPath2)"
-     inkscape:path-effect="#path-effect2"
-     inkscape:original-d="M 2,2 A 1,1 0 0 0 1,3 v 10 a 1,1 0 0 0 1,1 h 12 a 1,1 0 0 0 1,-1 V 6 A 1,1 0 0 0 14,5 H 10 A 1,1 0 0 1 9,4 V 3 A 1,1 0 0 0 8,2 Z" />
-  <clipPath
-     id="a">
-    <path
-       d="M-3.75 3.25h23.5v15.5h-23.5zM14 5H2l4 5h4z"
-       id="path1-6" />
+     clip-path="url(#b)"/>
+  <clipPath id="a">
+    <path d="M-3.75 3.25h23.5v15.5h-23.5zM14 5H2l4 5h4z"/>
   </clipPath>
-  <g
-     id="g2"
-     transform="matrix(0.47058725,0,0,0.47058725,1.4124967,2.7353154)">
+  <g transform="matrix(0.47058725,0,0,0.47058725,1.4124967,2.7353154)">
     <path
-       fill="#8da5f3"
-       d="M 18,13 H 15 V 8 h -2 v 5 h -3 l 4,5 z"
-       id="path2"
-       style="fill:#e0e0e0;fill-opacity:1" />
+       fill="#e0e0e0"
+       d="M 18,13 H 15 V 8 h -2 v 5 h -3 l 4,5 z"/>
     <path
        fill="none"
-       stroke="#8da5f3"
+       stroke="#e0e0e0"
        stroke-width="1.5"
        stroke-dasharray="2.625, 0.75"
        stroke-dashoffset="4.875"
        clip-path="url(#a)"
        d="M 14,11 A 6,2 0 0 1 8,13 6,2 0 0 1 2,11 6,2 0 0 1 8,9 6,2 0 0 1 14,11 Z"
-       id="path3"
-       transform="translate(6,7)"
-       style="fill:none;fill-opacity:1;stroke:#e0e0e0;stroke-opacity:1" />
+       transform="translate(6,7)"/>
   </g>
 </svg>
