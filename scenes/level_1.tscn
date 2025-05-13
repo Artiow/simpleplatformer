@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://dlncsxh7sqmmc" path="res://objects/nodes/2d/Level2D.gd" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bry7hktvd7egy" path="res://assets/sprites/world_tileset.png" id="2_bswci"]
 [ext_resource type="Script" uid="uid://bqgtvrfl8lnp1" path="res://objects/nodes/SpawnManager.gd" id="2_pa8r4"]
-[ext_resource type="Script" uid="uid://dj2gcyhf1k0ed" path="res://objects/nodes/2d/Hitbox2D.gd" id="2_rus8k"]
-[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/SpawnPoint2D.gd" id="3_15mv3"]
+[ext_resource type="Script" uid="uid://syxcpdlh4jqb" path="res://objects/nodes/2d/Spawn2D.gd" id="3_15mv3"]
 [ext_resource type="Script" uid="uid://m0icfqs0dksx" path="res://objects/nodes/PlayerLevelSession.gd" id="4_e3sih"]
 [ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="5_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://dyqmbo66567qp" path="res://scenes/enemy_slime.tscn" id="6_e3sih"]
 [ext_resource type="SpriteFrames" uid="uid://mfj2ogfcfohv" path="res://resources/slime_sprite_frames_amber.tres" id="7_2y5yt"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://0a4sygyy53my" path="res://scenes/core/level_enter.tscn" id="8_2y5yt"]
+[ext_resource type="PackedScene" uid="uid://pmsd37knqmwk" path="res://scenes/core/abyss.tscn" id="9_2y5yt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -355,10 +354,11 @@ metadata/_custom_type_script = "uid://dlncsxh7sqmmc"
 script = ExtResource("2_pa8r4")
 metadata/_custom_type_script = "uid://bqgtvrfl8lnp1"
 
-[node name="DefaultSpawnPoint" type="Marker2D" parent="SpawnManager"]
-position = Vector2(-376, 32)
+[node name="LegacySpawnPoint" type="Marker2D" parent="SpawnManager"]
 script = ExtResource("3_15mv3")
+id = &"legacy"
 metadata/_custom_type_script = "uid://syxcpdlh4jqb"
+metadata/_edit_lock_ = true
 
 [node name="PlayerLevelSession" type="Node" parent="."]
 script = ExtResource("4_e3sih")
@@ -369,18 +369,14 @@ metadata/_custom_type_script = "uid://m0icfqs0dksx"
 position = Vector2(24, 0)
 sprite_frames = ExtResource("7_2y5yt")
 max_distance = 80.0
-
-[node name="Killzone" type="Area2D" parent="."]
-position = Vector2(0, 104)
-collision_layer = 128
-collision_mask = 0
-script = ExtResource("2_rus8k")
-use_self_as_host = true
-metadata/_custom_type_script = "uid://dj2gcyhf1k0ed"
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_5xbjy")
+[node name="LevelEnter" parent="." instance=ExtResource("8_2y5yt")]
+position = Vector2(-376, 32)
+metadata/_edit_lock_ = true
+
+[node name="Abyss" parent="." instance=ExtResource("9_2y5yt")]
+position = Vector2(0, 104)
 metadata/_edit_lock_ = true
 
 [node name="Front" type="TileMapLayer" parent="."]

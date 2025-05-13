@@ -73,6 +73,16 @@ func _handle_movement():
 		sprite.play(&"run" if moving_direction else &"idle")
 
 
+func lock_movement(direction: float):
+	control_locked = true
+	moving_direction = direction
+
+
+func unlock_movement():
+	moving_direction = 0.0
+	control_locked = false
+
+
 func can_jump() -> bool:
 	return not _is_dead and (is_on_floor() or _jump_count < jump_limit)
 
