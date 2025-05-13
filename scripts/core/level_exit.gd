@@ -1,4 +1,4 @@
-@icon("res://icons/LevelExit.svg")
+@icon("res://editor/icons/LevelExit.svg")
 class_name LevelExit
 extends Node2D
 
