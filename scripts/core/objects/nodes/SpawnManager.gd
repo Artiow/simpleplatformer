@@ -1,4 +1,4 @@
-@icon("res://editor/icons/SpawnManager.svg")
+@icon("res://editor/icons/Service.svg")
 class_name SpawnManager
 extends Node
 
