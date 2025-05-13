@@ -1,3 +1,4 @@
+@icon("res://icons/LevelEnter.svg")
 class_name LevelEnter
 extends Spawn2D
 
