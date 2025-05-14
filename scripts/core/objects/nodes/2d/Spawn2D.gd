@@ -1,4 +1,4 @@
-@icon("res://editor/icons/Spawn2D.svg")
+@icon("res://editor/icons/arrow-spot-blue.svg")
 class_name Spawn2D
 extends Marker2D
 
