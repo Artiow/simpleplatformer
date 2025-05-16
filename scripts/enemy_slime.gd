@@ -63,7 +63,7 @@ func _physics_process(delta: float):
 
 
 func _can_move() -> bool:
-	return is_on_floor() and not _is_dead
+	return speed and is_on_floor() and not _is_dead
 
 
 func _should_turn_back() -> bool:

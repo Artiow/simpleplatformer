@@ -22,7 +22,9 @@ func _on_level_exit_reached(player: Player):
 
 
 func sync_camera_limits(camera: Camera2D):
-	camera.limit_bottom = border_bottom
-	camera.limit_left = border_left
-	camera.limit_right = border_right
-	camera.limit_top = border_top
+	var offset_x := floori(camera.offset.x)
+	var offset_y := floori(camera.offset.y)
+	camera.limit_bottom = border_bottom - offset_y
+	camera.limit_left = border_left - offset_x
+	camera.limit_right = border_right - offset_x
+	camera.limit_top = border_top - offset_y
