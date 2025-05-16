@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="ScoreStrategy" load_steps=2 format=3 uid="uid://ckeavr3lw8twa"]
 
-[ext_resource type="Script" uid="uid://c70b4vn8jxuhg" path="res://objects/resources/ScoreStrategy.gd" id="1_mbmhy"]
+[ext_resource type="Script" uid="uid://c70b4vn8jxuhg" path="res://scripts/core/objects/resources/ScoreStrategy.gd" id="1_mbmhy"]
 
 [resource]
 script = ExtResource("1_mbmhy")
+value = 1
 metadata/_custom_type_script = "uid://c70b4vn8jxuhg"

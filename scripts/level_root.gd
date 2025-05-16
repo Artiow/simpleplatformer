@@ -84,7 +84,7 @@ func _instantiate_level(level_id: int) -> Level2D:
 
 
 func _load_level_scene(level_id: int) -> PackedScene:
-	return load("res://scenes/level_%s.tscn" % level_id) as PackedScene
+	return load("res://scenes/levels/level_%s.tscn" % level_id) as PackedScene
 
 
 func _on_current_level_exit():

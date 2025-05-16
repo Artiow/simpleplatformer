@@ -1,3 +1,4 @@
+@icon("res://editor/icons/arrow-exit-blue.svg")
 class_name LevelExit
 extends Node2D
 
