@@ -22,6 +22,7 @@ autoplay = "idle"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 shape = ExtResource("3_aelh5")
 metadata/_edit_lock_ = true
@@ -54,6 +55,7 @@ shape = ExtResource("3_aelh5")
 metadata/_edit_lock_ = true
 
 [node name="WallRayCast" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 target_position = Vector2(8, 0)
 metadata/_edit_lock_ = true
@@ -61,6 +63,7 @@ metadata/_edit_lock_ = true
 [node name="KillTimer" type="Timer" parent="."]
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("6_mo75l")
 bus = &"SFX"
 metadata/_edit_lock_ = true
