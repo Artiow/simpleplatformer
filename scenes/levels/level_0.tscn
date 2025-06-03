@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bychx116r1vav"]
+[gd_scene load_steps=32 format=4 uid="uid://bychx116r1vav"]
 
 [ext_resource type="PackedScene" uid="uid://6eykw7iifspf" path="res://scenes/coin.tscn" id="1_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://unxpu4v4pn28" path="res://assets/sprites/world_tileset.png" id="1_f3sb7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://m0icfqs0dksx" path="res://scripts/core/objects/nodes/PlayerLevelSession.gd" id="4_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dyqmbo66567qp" path="res://scenes/enemy_slime.tscn" id="4_e3hyu"]
 [ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="5_171oe"]
+[ext_resource type="Script" uid="uid://dd7wrvn6mqkoo" path="res://scripts/core/objects/nodes/Folder.gd" id="6_gj3kh"]
 [ext_resource type="FontFile" uid="uid://cx4mrxh42ga1h" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="6_jhx03"]
 [ext_resource type="PackedScene" uid="uid://0a4sygyy53my" path="res://scenes/core/level_enter.tscn" id="10_171oe"]
 [ext_resource type="PackedScene" uid="uid://pmsd37knqmwk" path="res://scenes/core/abyss.tscn" id="11_om4r1"]
@@ -376,6 +377,8 @@ player_score_label = NodePath("../Labels/PlayerScoreLabel")
 metadata/_custom_type_script = "uid://m0icfqs0dksx"
 
 [node name="Coins" type="Node" parent="."]
+script = ExtResource("6_gj3kh")
+metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
 [node name="Coin" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(1, -40)
@@ -738,6 +741,8 @@ position = Vector2(1510, -216)
 metadata/_edit_lock_ = true
 
 [node name="Platforms" type="Node" parent="."]
+script = ExtResource("6_gj3kh")
+metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
 [node name="PlatformBig" parent="Platforms" instance=ExtResource("2_7r4gi")]
 position = Vector2(-1000, -64)
@@ -796,6 +801,8 @@ libraries = {
 autoplay = "move_loop"
 
 [node name="Enemies" type="Node" parent="."]
+script = ExtResource("6_gj3kh")
+metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
 [node name="EnemySlime" parent="Enemies" instance=ExtResource("4_e3hyu")]
 position = Vector2(-1000, -64)
@@ -836,6 +843,8 @@ max_distance = 80.0
 metadata/_edit_lock_ = true
 
 [node name="Labels" type="Node" parent="."]
+script = ExtResource("6_gj3kh")
+metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
 [node name="PlayerScoreLabel" type="Label" parent="Labels"]
 offset_left = -978.0
