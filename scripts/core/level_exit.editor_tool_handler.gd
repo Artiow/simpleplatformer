@@ -1,6 +1,6 @@
 @tool
-extends EditorToolHandler
+extends NodeEditorTool
 
 
-func _apply_editor_changes():
-	LevelExit._sync_scale(owner as LevelExit)
+func _apply_editor_changes(node: Node):
+	LevelExit._sync_scale(node as LevelExit)

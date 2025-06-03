@@ -1,6 +1,6 @@
 @tool
-extends EditorToolHandler
+extends NodeEditorTool
 
 
-func _apply_editor_changes():
-	LevelEnter._sync_scale(owner as LevelEnter)
+func _apply_editor_changes(node: Node):
+	LevelEnter._sync_scale(node as LevelEnter)
