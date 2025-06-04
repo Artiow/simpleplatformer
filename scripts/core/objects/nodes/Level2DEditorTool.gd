@@ -24,7 +24,7 @@ func _reset_monitoring():
 
 func _init_overlay_if_needed():
 	if not overlay:
-		overlay = CanvasUtils.attach_overlay_canvas_to(self, _on_overlay_draw)
+		overlay = CanvasUtils.create_overlay_canvas(self, _on_overlay_draw)
 
 
 func _default_monitored_properties() -> Array[StringName]:
