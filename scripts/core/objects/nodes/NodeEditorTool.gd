@@ -27,6 +27,7 @@ func _ready() -> void:
 		return
 
 	_reset_monitoring()
+	_apply_editor_changes(_monitored_node)
 
 
 func _extinguish():
