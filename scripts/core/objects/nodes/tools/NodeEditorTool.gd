@@ -6,19 +6,23 @@ extends Node
 @export_group("Property Monitoring", "monitored_")
 ## Optional custom node to monitor.
 ## If set, it overrides [member owner] as the monitored node.
-@export var monitored_node: Node:
-	set(value):
-		monitored_node = value
-		_reset_monitoring()
+@export var monitored_node: Node: set = set_monitored_node
 ## List of property names to monitor for changes in the editor.
-@export var monitored_properties: Array[StringName]:
-	set(value):
-		monitored_properties = value
-		_reset_monitoring()
+@export var monitored_properties: Array[StringName]: set = set_monitored_properties 
 
 var _monitored_node: Node
 var _monitored_properties: Array[StringName]
 var _last_hash: int
+
+
+func set_monitored_node(value: Node):
+	monitored_node = value
+	_reset_monitoring()
+
+
+func set_monitored_properties(value: Array[StringName]):
+	monitored_properties = value
+	_reset_monitoring()
 
 
 func _ready() -> void:

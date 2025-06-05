@@ -25,7 +25,11 @@ func _reset_monitoring():
 
 func _init_overlay_if_needed():
 	if not _overlay:
-		_overlay = CanvasUtils.create_overlay_canvas(self, _on_overlay_draw)
+		_overlay = CanvasUtils.create_overlay_canvas(_level2d, _on_overlay_draw)
+	elif _overlay.owner != _level2d:
+		push_warning("Overlay owner mismatch: expected %s, but got %s. Overlay will be recreated." % [_level2d.get_path(), _overlay.owner if _overlay.owner else "null"])
+		SceneUtils.free_node(_overlay)
+		_overlay = CanvasUtils.create_overlay_canvas(_level2d, _on_overlay_draw)
 
 
 func _redraw_overlay():

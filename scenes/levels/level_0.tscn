@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://0a4sygyy53my" path="res://scenes/core/level_enter.tscn" id="10_171oe"]
 [ext_resource type="PackedScene" uid="uid://pmsd37knqmwk" path="res://scenes/core/abyss.tscn" id="11_om4r1"]
 [ext_resource type="PackedScene" uid="uid://b5y1qc6mir22h" path="res://scenes/core/level_exit.tscn" id="13_171oe"]
-[ext_resource type="Script" uid="uid://dvm6x6kc8tuk6" path="res://scripts/core/objects/nodes/Level2DEditorTool.gd" id="15_myogd"]
+[ext_resource type="Script" uid="uid://dvm6x6kc8tuk6" path="res://scripts/core/objects/nodes/tools/Level2DEditorTool.gd" id="15_myogd"]
 
 [sub_resource type="Animation" id="Animation_lbhrr"]
 length = 0.001
