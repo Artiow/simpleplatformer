@@ -20,3 +20,10 @@ static func disconnect_safely(signal_obj: Signal, callable: Callable):
 static func reconnect_safely(signal_obj: Signal, callable: Callable, flags: int = 0):
 	disconnect_safely(signal_obj, callable)
 	connect_safely(signal_obj, callable, flags)
+
+
+## Disconnects all callables currently connected to the given [param signal_obj] safely.
+## Iterates through all connections and disconnects each one if it is currently connected.
+static func disconnect_all_safely(signal_obj: Signal):
+	for connection in signal_obj.get_connections():
+		disconnect_safely(signal_obj, connection[&"callable"])
