@@ -34,7 +34,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_extinguish()
 	else:
-		_reset()
+		_reset.call_deferred()
 
 
 func _extinguish():
@@ -105,10 +105,6 @@ func _on_overlay_redraw(canvas: CanvasItem):
 
 func _draw_overlay(_node: Node, _canvas: CanvasItem):
 	pass # override to implement custom logic
-
-
-func _exit_tree():
-	_reset()
 
 
 static func _is_draw_overlay_overriden(tool: NodeEditorTool) -> bool:
