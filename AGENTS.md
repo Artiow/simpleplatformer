@@ -22,16 +22,6 @@ Automated assistants working on this repository should follow these principles:
 - Follow and preserve the architectural decisions already present in the project.
 - Do not use deprecated APIs from Godot 3.x or early 4.x releases.
 
-### Safe Execution & Deferral
-- When using `call_deferred`, prefer the **type-safe form**:
-  ```gdscript
-  method.call_deferred()
-  ```
-  instead of:
-  ```gdscript
-  call_deferred("method")
-  ```
-
 ### Documentation & AI Collaboration
 - Maintain concise, structured documentation (e.g., in Markdown) describing architecture, key workflows, and intent.
 - AI assistants rely on this documentation to understand *why* code exists, not just *how* it works.
