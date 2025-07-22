@@ -5,10 +5,13 @@ extends StaticBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var monitoring_area: Area2D = $MonitoringArea
 
+var _sprite_texture: Texture2D
 @export var sprite_texture: Texture2D:
-	set(value):
-		sprite_texture = value
-		_apply_sprite_texture()
+       set(value):
+               _sprite_texture = value
+               _apply_sprite_texture()
+       get:
+               return _sprite_texture
 
 
 func _ready():

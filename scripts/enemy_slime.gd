@@ -12,10 +12,13 @@ enum MaxDistanceType {RELATIVE, GLOBAL}
 @onready var kill_timer: Timer = $KillTimer
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
+var _sprite_frames: SpriteFrames
 @export var sprite_frames: SpriteFrames:
-	set(value):
-		sprite_frames = value
-		_apply_sprite_frames()
+       set(value):
+               _sprite_frames = value
+               _apply_sprite_frames()
+       get:
+               return _sprite_frames
 
 @export var max_distance_type := MaxDistanceType.RELATIVE
 @export var max_distance := 1000.0
