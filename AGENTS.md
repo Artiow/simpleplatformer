@@ -30,9 +30,9 @@ Automated assistants working on this repository should follow these principles:
 - Document key architectural concepts in a way that persistent-memory AIs can reference and align with over time.
 
 ### `.aidocs` Reference
-The `/.aidocs/` folder stores persistent AI-facing documents. Each file is self-contained:
-- **aidocs-guidelines.md** – how to create and update AI documentation.
-- **architecture.md** – explains directory layout and how scenes, scripts and resources connect.
-- **nodes.md** – conventions for custom node scripts in `scripts/core/objects/nodes`.
-- **resources.md** – explanation of resource scripts and data files.
-- **conventions.md** – safe execution patterns and other project-wide practices.
+The `/.aidocs/` folder stores persistent AI-facing documents. Each file is self-contained and describes one subject:
+- **aidocs-guidelines.md** – instructions on writing and updating AI documentation.
+- **architecture.md** – an overview of the directory layout and how scenes, scripts, and resources relate to one another.
+- **nodes.md** – conventions for custom node scripts under `scripts/core/objects/nodes`.
+- **resources.md** – when and how resource scripts or `.tres` data files are used.
+- **conventions.md** – safe execution practices and other project‑wide standards.
