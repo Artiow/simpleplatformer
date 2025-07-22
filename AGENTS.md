@@ -5,7 +5,10 @@ It is an educational project focused on code quality, architectural clarity, and
 
 ## Agent Instructions
 
-Automated assistants working on this repository should follow these principles:
+This document defines high-level principles and expectations for automated assistants working on this repository.
+It provides strategic intent, while detailed topic-specific guidance is moved to `.aidocs/`.
+
+Assistants should follow the principles below and consult `.aidocs/` for implementation-level conventions:
 
 ### Language & Formatting
 - Use **GDScript 2.0** syntax and features.
@@ -31,8 +34,8 @@ Automated assistants working on this repository should follow these principles:
 
 ### `.aidocs` Reference
 The `/.aidocs/` folder stores persistent AI-facing documents. Each file is self-contained and describes one subject:
-- **aidocs-guidelines.md** – instructions on writing and updating AI documentation.
-- **architecture.md** – an overview of the directory layout and how scenes, scripts, and resources relate to one another.
-- **nodes.md** – conventions for custom node scripts under `scripts/core/objects/nodes`.
-- **resources.md** – when and how resource scripts or `.tres` data files are used.
-- **conventions.md** – safe execution practices and other project‑wide standards.
+- [**aidocs-guidelines.md**](./.aidocs/aidocs-guidelines.md) – instructions on writing and updating AI documentation.
+- [**architecture.md**](./.aidocs/architecture.md) – an overview of the directory layout and how scenes, scripts, and resources relate to one another.
+- [**nodes.md**](./.aidocs/nodes.md) – conventions for custom node scripts under `/scripts/core/objects/nodes`.
+- [**resources.md**](./.aidocs/resources.md) – conventions for custom resource scripts under `/scripts/core/objects/resources`.
+- [**conventions.md**](./.aidocs/conventions.md) – safe execution practices and other project‑wide standards.

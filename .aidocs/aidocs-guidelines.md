@@ -18,3 +18,11 @@ This folder stores persistent AI-facing documentation. Each file should cover a 
 - When modifying existing docs or adding new ones, also update `AGENTS.md` with a brief description of each file.
 - Ensure new docs respect Aider conventions and [Anthropic code best practices](https://www.anthropic.com/engineering/claude-code-best-practices) for clarity and maintainability.
 
+## Coordination with AGENTS.md
+- `AGENTS.md` defines high-level intent, principles, and the role of AI in the project.
+- `.aidocs/` contains detailed and topic-specific supporting documentation.
+- When moving any content from `AGENTS.md` to `.aidocs/`, always:
+  - Remove the original section from `AGENTS.md`.
+  - Optionally leave a brief cross-reference if needed.
+  - Ensure `.aidocs/` fully captures the removed content in context.
+
