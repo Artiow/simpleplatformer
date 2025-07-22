@@ -14,3 +14,26 @@ It captures design intent so assistants can understand where new files belong.
 Scenes reference scripts under `scripts/`, and scripts rely on resources for
 configuration. Keeping these directories separate allows clearer dependencies
 and simplifies extending the game.
+
+## Tree
+
+.
+├── assets
+│   ├── fonts
+│   ├── music
+│   ├── sounds
+│   └── sprites
+├── editor
+│   └── icons
+├── resources
+│   └── core
+├── scenes
+│   ├── core
+│   └── levels
+└── scripts
+    └── core
+        └── objects
+            ├── nodes
+            │   ├── 2d
+            │   └── tools
+            └── resources
