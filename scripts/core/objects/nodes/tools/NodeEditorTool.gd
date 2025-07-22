@@ -113,7 +113,7 @@ func _exit_tree():
 
 static func _is_draw_overlay_overriden(tool: NodeEditorTool) -> bool:
 	var script: Script = tool.get_script()
-	return script.get_base_script() and script.get_script_method_list().any(func(e: Dictionary): return e[&"name"] == _draw_overlay.get_method())
+	return script.get_base_script() and script.get_script_method_list().any(func(m: Dictionary): return m[&"name"] == tool._draw_overlay.get_method())
 
 
 static func _calculate_hash(node: Node, property_name_array: Array[StringName]) -> int:
