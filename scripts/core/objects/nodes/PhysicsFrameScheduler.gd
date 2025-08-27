@@ -50,6 +50,6 @@ func _emit_timeout():
 ## [param frames]: How many physics frames to wait before calling the callback.
 static func start_one_shot(parent: Node, callback: Callable, frames: int = 1):
 	var scheduler := PhysicsFrameScheduler.new()
-	SceneUtils.attach_node_to(scheduler, parent)
+	SceneUtils.attach_node_to(scheduler, parent, INTERNAL_MODE_BACK)
 	SignalUtils.connect_safely(scheduler.timeout, callback, CONNECT_ONE_SHOT)
 	scheduler.start(frames)

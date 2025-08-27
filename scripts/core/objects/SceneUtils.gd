@@ -1,9 +1,11 @@
 class_name SceneUtils
 extends Object
 
+
 ## Searches for child nodes of the given [param type] within the node tree of [param node].
 static func find_children_in(node: Node, type: StringName, recursive: bool = false, owned: bool = true) -> Array[Node]:
 	return node.find_children("*", type, recursive, owned)
+
 
 ## Searches for a single child node of the given [param type] within the node tree of [param node].
 ## If multiple nodes are found, a warning is logged and the first one is returned.
@@ -18,31 +20,10 @@ static func find_singleton_child_in(node: Node, type: StringName, recursive: boo
 	return candidates[0]
 
 
-## Reattaches the given [param node] to a new [param parent].
-## If the node already has a different parent, it will be detached first.
-static func reattach_node_to(node: Node, parent: Node) -> void:
-	if not node:
-		push_error("Node to attach is null.")
-		return
-	if not parent:
-		push_error("Parent node to attach to is null.")
-		return
-
-	var existed_parent := node.get_parent()
-	if existed_parent == parent:
-		push_warning("Node is already a child of the specified parent.")
-		return
-
-	if existed_parent:
-		existed_parent.remove_child(node)
-
-	parent.add_child(node)
-	node.set_owner(parent)
-
-
 ## Attaches the given [param node] as a child of [param parent] and sets its owner to [param parent].
+## If [param internal] is different than [constant Node.INTERNAL_MODE_DISABLED], the child will be added as internal node.
 ## This is useful when dynamically adding a node that should be part of the scene tree and saved with it.
-static func attach_node_to(node: Node, parent: Node) -> void:
+static func attach_node_to(node: Node, parent: Node, internal: int = 0) -> void:
 	if not node:
 		push_error("Node to attach is null.")
 		return
@@ -58,7 +39,7 @@ static func attach_node_to(node: Node, parent: Node) -> void:
 			push_error("Node is already a child of an another node.")
 		return
 
-	parent.add_child(node)
+	parent.add_child(node, false, internal)
 	node.set_owner(parent)
 
 

@@ -9,18 +9,18 @@ extends Node
 @export var monitored_node: Node:
 	set(value):
 		monitored_node = value
-		_reset()
+		_reset.call_deferred()
 ## List of property names to monitor for changes in the editor.
 @export var monitored_properties: Array[StringName]:
 	set(value):
 		monitored_properties = value
-		_reset()
+		_reset.call_deferred()
 
 @export_group("Overlay Canvas", "overlay_")
 @export var overlay_enabled: bool = true:
 	set(value):
 		overlay_enabled = value
-		_reset_overlay()
+		_reset_overlay.call_deferred()
 
 var _monitored_node: Node
 var _monitored_properties: Array[StringName]
@@ -74,6 +74,24 @@ func _fetch_monitored_properties() -> Array[StringName]:
 
 func _default_monitored_properties() -> Array[StringName]:
 	return [] # override to implement custom logic
+
+
+func _invalidate_on_save():
+	if _monitored_node:
+		_monitored_node = null
+		_monitored_properties = []
+		_last_hash = 0
+
+	if _overlay:
+		_overlay.owner = null
+
+
+func _notification(what: int):
+	match what:
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			_invalidate_on_save()
+		NOTIFICATION_EDITOR_POST_SAVE:
+			_reset.call_deferred()
 
 
 func _process(_delta: float):
