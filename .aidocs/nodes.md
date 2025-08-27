@@ -1,4 +1,4 @@
-# nodes
+# nodes.md
 
 Custom node scripts live under `scripts/core/objects/nodes`. They provide reusable behaviors that extend Godot's standard nodes.
 

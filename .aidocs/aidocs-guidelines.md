@@ -1,4 +1,4 @@
-# aidocs-guidelines
+# aidocs-guidelines.md
 
 This folder stores persistent AI-facing documentation. Each file should cover a single topic so assistants can load only what they need.
 

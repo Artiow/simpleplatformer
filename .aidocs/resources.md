@@ -1,4 +1,4 @@
-# resources
+# resources.md
 
 Resource scripts and data files provide tunable gameplay parameters. They are stored under `scripts/core/objects/resources` and `resources/`.
 

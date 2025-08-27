@@ -1,4 +1,4 @@
-# conventions
+# conventions.md
 
 This file captures execution and style conventions that are not obvious from code alone.
 

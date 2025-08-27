@@ -36,6 +36,6 @@ Assistants should follow the principles below and consult `.aidocs/` for impleme
 The `/.aidocs/` folder stores persistent AI-facing documents. Each file is self-contained and describes one subject:
 - [**aidocs-guidelines.md**](./.aidocs/aidocs-guidelines.md) – instructions on writing and updating AI documentation.
 - [**architecture.md**](./.aidocs/architecture.md) – an overview of the directory layout and how scenes, scripts, and resources relate to one another.
+- [**conventions.md**](./.aidocs/conventions.md) – safe execution practices and other project‑wide standards.
 - [**nodes.md**](./.aidocs/nodes.md) – conventions for custom node scripts under `/scripts/core/objects/nodes`.
 - [**resources.md**](./.aidocs/resources.md) – conventions for custom resource scripts under `/scripts/core/objects/resources`.
-- [**conventions.md**](./.aidocs/conventions.md) – safe execution practices and other project‑wide standards.
