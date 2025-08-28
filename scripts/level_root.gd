@@ -14,7 +14,7 @@ var _current_level_id: int
 
 
 func _ready():
-	SceneUtils.detach_node_from(camera, self)
+	SceneUtils.detach_node(camera)
 	load_level(0)
 
 
@@ -32,10 +32,10 @@ func _load_level(level_id: int):
 
 func _cleanup():
 	if current_level:
-		SceneUtils.free_node_from(current_level, self)
+		SceneUtils.free_node(current_level)
 	if player:
-		SceneUtils.detach_node_from(camera, player)
-		SceneUtils.free_node_from(player, self)
+		SceneUtils.detach_node(camera)
+		SceneUtils.free_node(player)
 
 
 func _instantiate():
