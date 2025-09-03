@@ -20,7 +20,7 @@ static func find_singleton_child_in(node: Node, type: StringName, recursive: boo
 	return candidates[0]
 
 
-## Attaches the given [param node] as a child of [param parent] and sets its owner to [param parent].
+## Attaches the given [param node] as a child of [param parent].
 ## If [param internal] is different than [constant Node.INTERNAL_MODE_DISABLED], the child will be added as internal node.
 ## This is useful when dynamically adding a node that should be part of the scene tree and saved with it.
 static func attach_node_to(node: Node, parent: Node, internal: int = 0) -> void:
@@ -40,7 +40,6 @@ static func attach_node_to(node: Node, parent: Node, internal: int = 0) -> void:
 		return
 
 	parent.add_child(node, false, internal)
-	node.set_owner(parent)
 
 
 ## Detaches the given [param node] from its parent and clears its owner.

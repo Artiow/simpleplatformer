@@ -15,6 +15,7 @@ static func create_overlay_canvas(parent: Node, on_overlay_draw: Callable, name:
 	var overlay: CanvasItem = Node2D.new()
 	SceneUtils.attach_node_to(overlay, parent, Node.INTERNAL_MODE_BACK)
 	SignalUtils.connect_safely(overlay.draw, on_overlay_draw.bindv([overlay]))
+	overlay.owner = parent
 	overlay.name = name
 	overlay.z_index = z_index
 	overlay.queue_redraw()
