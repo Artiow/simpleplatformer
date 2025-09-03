@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bychx116r1vav"]
+[gd_scene load_steps=32 format=4 uid="uid://bychx116r1vav"]
 
 [ext_resource type="PackedScene" uid="uid://6eykw7iifspf" path="res://scenes/coin.tscn" id="1_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://unxpu4v4pn28" path="res://assets/sprites/world_tileset.png" id="1_f3sb7"]
@@ -171,12 +171,8 @@ _data = {
 font = ExtResource("6_jhx03")
 font_size = 8
 
-[sub_resource type="LabelSettings" id="LabelSettings_xo05s"]
-font = ExtResource("6_jhx03")
-font_size = 8
-font_color = Color(0.0980392, 0.313726, 0.752941, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_7t5mc"]
+line_spacing = 6.0
 font = ExtResource("6_jhx03")
 font_size = 8
 font_color = Color(0.0117647, 0.14902, 0.34902, 1)
@@ -871,41 +867,35 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Labels"]
-offset_left = -136.0
-offset_top = -80.0
-offset_right = -20.0
-offset_bottom = -48.0
-text = "A D or ◀ ▶ to move"
-label_settings = SubResource("LabelSettings_xo05s")
-metadata/_edit_lock_ = true
-
-[node name="Label2" type="Label" parent="Labels"]
-offset_left = -136.0
-offset_top = -64.0
-offset_right = -96.0
-offset_bottom = -41.0
-text = "SPACE to jump"
-label_settings = SubResource("LabelSettings_xo05s")
-metadata/_edit_lock_ = true
-
-[node name="Label3" type="Label" parent="Labels"]
-offset_left = 20.0
-offset_top = -124.0
-offset_right = 152.0
-offset_bottom = -101.0
-text = "S or ▼ to drop
-through a platform"
+[node name="TutorLabel1" type="Label" parent="Labels"]
+offset_left = -1168.0
+offset_top = -108.0
+offset_right = -1052.0
+offset_bottom = -76.0
+text = "A/D or ◀/▶ to move
+SPACE to jump"
 label_settings = SubResource("LabelSettings_7t5mc")
 metadata/_edit_lock_ = true
 
-[node name="Label4" type="Label" parent="Labels"]
-offset_left = 940.0
-offset_top = -284.0
-offset_right = 1018.0
-offset_bottom = -261.0
-text = "keep goin'!"
-label_settings = SubResource("LabelSettings_15mv3")
+[node name="TutorLabel2" type="Label" parent="Labels"]
+offset_left = -920.0
+offset_top = -152.0
+offset_right = -788.0
+offset_bottom = -126.0
+text = "S or ▼ to drop
+through platforms"
+label_settings = SubResource("LabelSettings_7t5mc")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="TutorLabel3" type="Label" parent="Labels"]
+offset_left = -764.0
+offset_top = -24.0
+offset_right = -662.0
+text = "SPACE twice
+to double jump"
+label_settings = SubResource("LabelSettings_7t5mc")
+horizontal_alignment = 2
 metadata/_edit_lock_ = true
 
 [node name="LevelEnter" parent="." instance=ExtResource("10_171oe")]
