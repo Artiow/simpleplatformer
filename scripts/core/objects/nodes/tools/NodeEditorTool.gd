@@ -27,10 +27,10 @@ var _monitored_properties: Array[StringName]
 var _last_hash := 0
 
 var _overlay: CanvasItem
-var _draw_overlay_overriden := NodeEditorTool._is_draw_overlay_overriden(self)
+var _draw_overlay_overridden := NodeEditorTool._is_draw_overlay_overridden(self)
 
 
-func _ready() -> void:
+func _ready():
 	if not Engine.is_editor_hint():
 		_extinguish()
 	else:
@@ -53,17 +53,19 @@ func _reset_monitoring():
 
 
 func _reset_overlay() -> void:
-	if not _monitored_node or not overlay_enabled or not _draw_overlay_overriden:
+	if not overlay_enabled or not _draw_overlay_overridden:
+		_free_overlay()
+		return
+
+	if not _monitored_node:
 		if _overlay:
-			CanvasUtils.free_overlay_canvas(_overlay)
-			_overlay = null
+			SceneUtils.detach_node(_overlay)
 		return
 
 	if not _overlay:
 		_overlay = CanvasUtils.create_overlay_canvas(_monitored_node, _on_overlay_redraw)
-	elif _overlay.owner != _monitored_node:
-		CanvasUtils.free_overlay_canvas(_overlay)
-		_overlay = CanvasUtils.create_overlay_canvas(_monitored_node, _on_overlay_redraw)
+	else:
+		_overlay = CanvasUtils.ensure_overlay_canvas_target(_overlay, _monitored_node)
 
 
 func _fetch_monitored_properties() -> Array[StringName]:
@@ -76,22 +78,31 @@ func _default_monitored_properties() -> Array[StringName]:
 	return [] # override to implement custom logic
 
 
-func _invalidate_on_save():
-	if _monitored_node:
-		_monitored_node = null
-		_monitored_properties = []
-		_last_hash = 0
-
+func _invalidate_overlay():
 	if _overlay:
 		_overlay.owner = null
+
+
+func _free_overlay():
+	if _overlay:
+		CanvasUtils.free_overlay_canvas(_overlay)
+		_overlay = null
 
 
 func _notification(what: int):
 	match what:
 		NOTIFICATION_EDITOR_PRE_SAVE:
-			_invalidate_on_save()
+			_invalidate_overlay()
 		NOTIFICATION_EDITOR_POST_SAVE:
 			_reset.call_deferred()
+
+
+func _enter_tree():
+	_reset.call_deferred()
+
+
+func _exit_tree():
+	_free_overlay()
 
 
 func _process(_delta: float):
@@ -125,7 +136,7 @@ func _draw_overlay(_node: Node, _canvas: CanvasItem):
 	pass # override to implement custom logic
 
 
-static func _is_draw_overlay_overriden(tool: NodeEditorTool) -> bool:
+static func _is_draw_overlay_overridden(tool: NodeEditorTool) -> bool:
 	var script: Script = tool.get_script()
 	return script.get_base_script() and script.get_script_method_list().any(func(m: Dictionary): return m[&"name"] == tool._draw_overlay.get_method())
 
