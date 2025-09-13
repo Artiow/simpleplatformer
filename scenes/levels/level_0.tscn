@@ -925,6 +925,7 @@ metadata/_edit_lock_ = true
 
 [node name="LevelEditorTool" type="Node" parent="."]
 script = ExtResource("15_myogd")
+overlay_enabled = true
 metadata/_custom_type_script = "uid://dvm6x6kc8tuk6"
 
 [connection signal="reached" from="LevelExit" to="." method="_on_level_exit_reached"]

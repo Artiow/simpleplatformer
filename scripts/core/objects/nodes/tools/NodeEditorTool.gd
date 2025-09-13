@@ -17,7 +17,7 @@ extends Node
 		_reset.call_deferred()
 
 @export_group("Overlay Canvas", "overlay_")
-@export var overlay_enabled: bool = true:
+@export var overlay_enabled: bool = false:
 	set(value):
 		overlay_enabled = value
 		_reset_overlay.call_deferred()
@@ -59,13 +59,19 @@ func _reset_overlay() -> void:
 
 	if not _monitored_node:
 		if _overlay:
+			print_debug("%s: detach_node(%s)..." % [self, _overlay])
 			SceneUtils.detach_node(_overlay)
+			print_debug("%s: detach_node DONE (detached %s)" % [self, _overlay])
 		return
 
 	if not _overlay:
+		print_debug("%s: create_overlay_canvas(%s)..." % [self, _monitored_node])
 		_overlay = CanvasUtils.create_overlay_canvas(_monitored_node, _on_overlay_redraw)
+		print_debug("%s: create_overlay_canvas DONE (created %s)" % [self, _overlay])
 	else:
+		print_debug("%s: ensure_overlay_canvas_target(%s, %s)..." % [self, _overlay, _monitored_node])
 		_overlay = CanvasUtils.ensure_overlay_canvas_target(_overlay, _monitored_node)
+		print_debug("%s: ensure_overlay_canvas_target DONE (ensured %s)" % [self, _overlay])
 
 
 func _fetch_monitored_properties() -> Array[StringName]:
@@ -78,30 +84,33 @@ func _default_monitored_properties() -> Array[StringName]:
 	return [] # override to implement custom logic
 
 
-func _invalidate_overlay():
-	if _overlay:
-		_overlay.owner = null
-
-
 func _free_overlay():
 	if _overlay:
-		CanvasUtils.free_overlay_canvas(_overlay)
+		print_debug("%s: freeing _overlay (%s)..." % [self, _overlay])
+		SignalUtils.disconnect_all_safely(_overlay.draw)
+		_overlay.queue_free()
+		print_debug("%s: _overlay (%s) has queued to free" % [self, _overlay])
 		_overlay = null
+	else:
+		print_debug("%s: no _overlay to free" % self)
 
 
+## Logs "save" events
 func _notification(what: int):
 	match what:
 		NOTIFICATION_EDITOR_PRE_SAVE:
-			_invalidate_overlay()
+			print_debug("%s: NOTIFICATION_EDITOR_PRE_SAVE (_monitored_node %s, _overlay: %s)" % [self, _monitored_node, _overlay])
 		NOTIFICATION_EDITOR_POST_SAVE:
-			_reset.call_deferred()
+			print_debug("%s: NOTIFICATION_EDITOR_POST_SAVE (_monitored_node %s, _overlay: %s)" % [self, _monitored_node, _overlay])
 
 
 func _enter_tree():
+	print_debug("%s: _enter_tree()" % self)
 	_reset.call_deferred()
 
 
 func _exit_tree():
+	print_debug("%s: _exit_tree()" % self)
 	_free_overlay()
 
 
