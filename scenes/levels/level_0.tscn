@@ -740,15 +740,19 @@ metadata/_edit_lock_ = true
 
 [node name="Coin91" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(-887, 185)
+metadata/_edit_lock_ = true
 
 [node name="Coin92" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(-873, 185)
+metadata/_edit_lock_ = true
 
 [node name="Coin93" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(-887, 199)
+metadata/_edit_lock_ = true
 
 [node name="Coin94" parent="Coins" instance=ExtResource("1_4mrxx")]
 position = Vector2(-873, 199)
+metadata/_edit_lock_ = true
 
 [node name="Platforms" type="Node" parent="."]
 script = ExtResource("6_gj3kh")
@@ -823,6 +827,7 @@ position = Vector2(-840, 144)
 scale = Vector2(-1, 1)
 max_distance = 0.0
 speed = 0.0
+metadata/_edit_lock_ = true
 
 [node name="SlimeGreen" parent="Enemies" instance=ExtResource("4_e3hyu")]
 position = Vector2(-200, -16)
