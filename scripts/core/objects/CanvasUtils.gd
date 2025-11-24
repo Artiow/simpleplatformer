@@ -4,7 +4,7 @@ extends Object
 
 ## Creates a [CanvasItem] overlay and connects its [signal CanvasItem.draw] to [param on_overlay_draw].
 ## The [param on_overlay_draw] callback must accept one argument: the overlay node (of type [CanvasItem]).
-static func create_overlay_canvas(target: Node, on_overlay_draw: Callable, name: StringName = &"OverlayCanvas", z_index: int = 4096) -> CanvasItem:
+static func create_overlay_canvas(target: Node2D, on_overlay_draw: Callable, name: StringName = &"OverlayCanvas", z_index: int = 4096) -> CanvasItem:
 	if not target:
 		push_error("Target node must be not null.")
 		return null

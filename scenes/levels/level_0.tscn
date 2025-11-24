@@ -928,7 +928,7 @@ tile_map_data = PackedByteArray("AADI/+r/AAAAAAkAAADI/+v/AAAAAAkAAADI/+z/AAAAAAk
 tile_set = SubResource("TileSet_tlwt5")
 metadata/_edit_lock_ = true
 
-[node name="LevelEditorTool" type="Node" parent="."]
+[node name="LevelEditorTool" type="Node2D" parent="."]
 script = ExtResource("15_myogd")
 overlay_enabled = true
 metadata/_custom_type_script = "uid://dvm6x6kc8tuk6"

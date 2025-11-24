@@ -56,10 +56,10 @@ func _process(_delta: float):
 	var current_hash := NodeEditorTool._calculate_hash(_monitored_node, _monitored_properties)
 	if current_hash != _last_hash:
 		_last_hash = current_hash
-		apply_editor_changes()
+		queue_apply_editor_changes()
 
 
-func apply_editor_changes():
+func queue_apply_editor_changes():
 	if _monitored_node:
 		_apply_editor_changes.call_deferred(_monitored_node)
 
