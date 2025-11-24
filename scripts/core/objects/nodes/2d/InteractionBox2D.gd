@@ -35,18 +35,18 @@ func _init_rect():
 
 
 func _find_child_collision_shapes() -> Array:
-	return find_children("*", &"CollisionShape2D", false).filter(func(e): return e is CollisionShape2D and e.shape != null)
+	return find_children("*", &"CollisionShape2D", false).filter(func(e): return e is CollisionShape2D and e.shape)
 
 
 func _init_host() -> void:
-	if host != null:
+	if host:
 		return
 
 	if use_self_as_host:
 		host = self
 		return
 
-	if owner == null:
+	if not owner:
 		host = self
 	elif owner is Node2D:
 		host = owner

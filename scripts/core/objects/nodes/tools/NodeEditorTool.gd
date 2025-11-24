@@ -106,11 +106,11 @@ func _draw_overlay(_node: Node, _canvas: CanvasItem):
 
 static func _is_draw_overlay_overridden(tool: NodeEditorTool) -> bool:
 	var script: Script = tool.get_script()
-	return script.get_base_script() and script.get_script_method_list().any(func(m: Dictionary): return m[&"name"] == tool._draw_overlay.get_method())
+	return script and script.get_base_script() and script.get_script_method_list().any(func(m: Dictionary): return m[&"name"] == tool._draw_overlay.get_method())
 
 
 static func _calculate_hash(node: Node, property_name_array: Array[StringName]) -> int:
-	if node == null or property_name_array.is_empty():
+	if not node or property_name_array.is_empty():
 		return 0
 
 	var result := 0
@@ -121,7 +121,7 @@ static func _calculate_hash(node: Node, property_name_array: Array[StringName]) 
 
 
 static func _filter_existing_properties(node: Node, property_name_array: Array[StringName]) -> Array[StringName]:
-	if node == null or property_name_array.is_empty():
+	if not node or property_name_array.is_empty():
 		return []
 
 	var property_name_set: Dictionary[StringName, bool] = {}
