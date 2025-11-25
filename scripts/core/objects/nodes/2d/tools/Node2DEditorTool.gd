@@ -1,5 +1,5 @@
 @tool
-@icon("res://editor/icons/gear-blue.svg")
+@icon("res://editor/icons/gear-blue-skyblue.svg")
 class_name Node2DEditorTool
 extends Node2D
 

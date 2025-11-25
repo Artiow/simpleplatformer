@@ -25,6 +25,14 @@ Music="*res://scenes/music.tscn"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[file_customization]
+
+folder_colors={
+"res://resources/": "orange",
+"res://scenes/": "yellow",
+"res://scripts/": "blue"
+}
+
 [input]
 
 move_left={

@@ -1,3 +1,4 @@
+@icon("res://editor/icons/knight-blue.svg")
 class_name Player
 extends CharacterBody2D
 
