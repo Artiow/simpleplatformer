@@ -1,12 +1,12 @@
 @tool
-@icon("res://editor/icons/gear-white.svg")
-class_name NodeEditorTool
-extends Node
+@icon("res://editor/icons/gear-blue.svg")
+class_name Node2DEditorTool
+extends Node2D
 
 @export_group("Property Monitoring", "monitored_")
 ## Optional custom node to monitor.
 ## If set, it overrides [member owner] as the monitored node.
-@export var monitored_node: Node:
+@export var monitored_node: Node2D:
 	set(value):
 		monitored_node = value
 		_reset.call_deferred()
@@ -16,7 +16,13 @@ extends Node
 		monitored_properties = value
 		_reset.call_deferred()
 
-var _monitored_node: Node
+@export_group("Overlay Canvas", "overlay_")
+@export var overlay_enabled: bool = false:
+	set(value):
+		overlay_enabled = value
+		queue_redraw()
+
+var _monitored_node: Node2D
 var _monitored_properties: Array[StringName]
 var _last_hash := 0
 
@@ -60,36 +66,24 @@ func _process(_delta: float):
 
 
 func queue_apply_editor_changes():
+	_apply_editor_changes_and_redraw.call_deferred()
+
+
+func _apply_editor_changes_and_redraw():
 	if _monitored_node:
-		_apply_editor_changes.call_deferred(_monitored_node)
+		_apply_editor_changes(_monitored_node)
+
+	queue_redraw()
 
 
-func _apply_editor_changes(_node: Node):
+func _apply_editor_changes(_node: Node2D):
 	pass # override to implement custom logic
 
 
-static func _calculate_hash(node: Node, property_name_array: Array[StringName]) -> int:
-	if not node or property_name_array.is_empty():
-		return 0
-
-	var result := 0
-	for property_name in property_name_array:
-		result = 31 * result + hash(node.get(property_name))
-
-	return result
+func _draw():
+	if overlay_enabled and _monitored_node:
+		_draw_overlay(_monitored_node, self)	
 
 
-static func _filter_existing_properties(node: Node, property_name_array: Array[StringName]) -> Array[StringName]:
-	if not node or property_name_array.is_empty():
-		return []
-
-	var property_name_set: Dictionary[StringName, bool] = {}
-	for property in node.get_property_list():
-		property_name_set[property.name] = true
-
-	var result: Array[StringName] = []
-	for property_name in property_name_array:
-		if property_name_set.erase(property_name):
-			result.append(property_name)
-
-	return result
+func _draw_overlay(_node: Node2D, _canvas: CanvasItem):
+	pass # override to implement custom logic

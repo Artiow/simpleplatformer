@@ -1,6 +1,6 @@
 @tool
 class_name Level2DEditorTool
-extends NodeEditorTool
+extends Node2DEditorTool
 
 const _DEFAULT_PROPERTIES: Array[StringName] = [&"border_bottom", &"border_left", &"border_right", &"border_top"]
 
@@ -8,11 +8,11 @@ const _DEFAULT_PROPERTIES: Array[StringName] = [&"border_bottom", &"border_left"
 @export var border_color := Color(1.0, 0.6, 0.7, 0.4):
 	set(value):
 		border_color = value
-		redraw_overlay()
+		queue_redraw()
 @export var border_width := 3.0:
 	set(value):
 		border_width = value
-		redraw_overlay()
+		queue_redraw()
 
 
 func _default_monitored_properties() -> Array[StringName]:
