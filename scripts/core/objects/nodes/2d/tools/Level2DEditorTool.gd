@@ -19,7 +19,7 @@ func _default_monitored_properties() -> Array[StringName]:
 	return _DEFAULT_PROPERTIES
 
 
-func _draw_overlay(node: Node, canvas: CanvasItem):
+func _draw_overlay(node: Node2D, canvas: CanvasItem):
 	if node is Level2D:
 		var level2d := node as Level2D
 		var border_position := Vector2(level2d.border_left, level2d.border_top)
