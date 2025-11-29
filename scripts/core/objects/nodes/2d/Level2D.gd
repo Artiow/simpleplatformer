@@ -1,4 +1,4 @@
-@icon("res://editor/icons/tile-landmark-blue.svg")
+@icon("res://assets/editor/icons/tile-landmark-blue.svg")
 class_name Level2D
 extends Node2D
 

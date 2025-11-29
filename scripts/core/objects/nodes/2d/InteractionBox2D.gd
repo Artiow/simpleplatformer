@@ -1,4 +1,4 @@
-@icon("res://editor/icons/arrow-out-box-blue.svg")
+@icon("res://assets/editor/icons/arrow-out-box-blue.svg")
 class_name InteractionBox2D
 extends Area2D
 

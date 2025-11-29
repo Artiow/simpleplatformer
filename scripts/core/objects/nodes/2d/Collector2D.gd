@@ -1,4 +1,4 @@
-@icon("res://editor/icons/arrow-in-box-blue.svg")
+@icon("res://assets/editor/icons/arrow-in-box-blue.svg")
 class_name Collector2D
 extends InteractionBox2D
 

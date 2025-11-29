@@ -1,6 +1,6 @@
 ## Schedules a callback after a specified number of physics frames.
 ## Works similarly to [Timer] but measures physics frames instead of real time.
-@icon("res://editor/icons/gear-timer-white.svg")
+@icon("res://assets/editor/icons/gear-timer-white.svg")
 class_name PhysicsFrameScheduler
 extends Node
 

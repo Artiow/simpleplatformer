@@ -1,4 +1,4 @@
-@icon("res://editor/icons/area-trigger-blue.svg")
+@icon("res://assets/editor/icons/area-trigger-blue.svg")
 class_name PlayerTrigger
 extends Area2D
 

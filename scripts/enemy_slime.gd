@@ -1,4 +1,4 @@
-@icon("res://editor/icons/slime-blue.svg")
+@icon("res://assets/editor/icons/slime-blue.svg")
 class_name EnemySlime
 extends CharacterBody2D
 

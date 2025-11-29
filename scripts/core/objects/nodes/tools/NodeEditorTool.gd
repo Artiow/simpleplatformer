@@ -1,5 +1,5 @@
 @tool
-@icon("res://editor/icons/gear-white-skyblue.svg")
+@icon("res://assets/editor/icons/gear-white-skyblue.svg")
 class_name NodeEditorTool
 extends Node
 

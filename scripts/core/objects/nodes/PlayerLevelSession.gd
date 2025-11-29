@@ -1,4 +1,4 @@
-@icon("res://editor/icons/knight-white.svg")
+@icon("res://assets/editor/icons/knight-white.svg")
 class_name PlayerLevelSession
 extends Node
 
