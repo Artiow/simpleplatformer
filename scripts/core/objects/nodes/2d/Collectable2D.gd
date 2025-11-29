@@ -1,3 +1,4 @@
+@icon("res://editor/icons/collectable-blue.svg")
 class_name Collectable2D
 extends Area2D
 

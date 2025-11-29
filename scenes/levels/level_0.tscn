@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://m0icfqs0dksx" path="res://scripts/core/objects/nodes/PlayerLevelSession.gd" id="4_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dyqmbo66567qp" path="res://scenes/enemy_slime.tscn" id="4_e3hyu"]
 [ext_resource type="Resource" uid="uid://ckeavr3lw8twa" path="res://resources/score_strategy.tres" id="5_171oe"]
-[ext_resource type="Script" uid="uid://dd7wrvn6mqkoo" path="res://scripts/core/objects/nodes/Folder.gd" id="6_gj3kh"]
+[ext_resource type="Script" uid="uid://dd7wrvn6mqkoo" path="res://scripts/core/objects/nodes/2d/Folder2D.gd" id="6_gj3kh"]
 [ext_resource type="FontFile" uid="uid://cx4mrxh42ga1h" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="6_jhx03"]
 [ext_resource type="PackedScene" uid="uid://0a4sygyy53my" path="res://scenes/core/level_enter.tscn" id="10_171oe"]
 [ext_resource type="PackedScene" uid="uid://pmsd37knqmwk" path="res://scenes/core/abyss.tscn" id="11_om4r1"]
 [ext_resource type="PackedScene" uid="uid://b5y1qc6mir22h" path="res://scenes/core/level_exit.tscn" id="13_171oe"]
-[ext_resource type="Script" uid="uid://dvm6x6kc8tuk6" path="res://scripts/core/objects/nodes/tools/Level2DEditorTool.gd" id="15_myogd"]
+[ext_resource type="Script" uid="uid://dvm6x6kc8tuk6" path="res://scripts/core/objects/nodes/2d/tools/Level2DEditorTool.gd" id="15_myogd"]
 
 [sub_resource type="Animation" id="Animation_lbhrr"]
 length = 0.001
@@ -374,7 +374,7 @@ score_strategy = ExtResource("5_171oe")
 player_score_label = NodePath("../Labels/PlayerScoreLabel")
 metadata/_custom_type_script = "uid://m0icfqs0dksx"
 
-[node name="Coins" type="Node" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 script = ExtResource("6_gj3kh")
 metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
@@ -754,7 +754,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-873, 199)
 metadata/_edit_lock_ = true
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 script = ExtResource("6_gj3kh")
 metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
@@ -814,7 +814,7 @@ libraries = {
 }
 autoplay = "move_loop"
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("6_gj3kh")
 metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
@@ -857,7 +857,7 @@ position = Vector2(1208, -208)
 max_distance = 80.0
 metadata/_edit_lock_ = true
 
-[node name="Labels" type="Node" parent="."]
+[node name="Labels" type="Node2D" parent="."]
 script = ExtResource("6_gj3kh")
 metadata/_custom_type_script = "uid://dd7wrvn6mqkoo"
 
