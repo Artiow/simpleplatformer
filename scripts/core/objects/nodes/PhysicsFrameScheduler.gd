@@ -20,6 +20,7 @@ func _ready():
 
 
 func _physics_process(_delta: float):
+	# start may be called during the same physics tick, so skip processing that frame
 	if _frames_left > 0:
 		_frames_left -= 1
 	else:
